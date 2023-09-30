@@ -1,0 +1,13 @@
+---
+export function getStaticPaths() {
+  return [
+    { params: { slug: "clifford" } },
+    { params: { slug: "rover" } },
+    { params: { slug: "spot" } },
+  ];
+}
+
+const { slug } = Astro.params;
+---
+
+<div>Good dog here will be full size gallery img with controlls, {slug}!</div>

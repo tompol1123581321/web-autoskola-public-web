@@ -1,0 +1,20 @@
+---
+import Container from "../components/container.astro";
+import Sectionhead from "../components/sectionhead.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Kontakty">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Kontakty</Fragment>
+      <Fragment slot="desc">
+        Nebojte se nás kontaktovat, nebo navštívit s dotazem.
+      </Fragment>
+    </Sectionhead>
+
+    <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-16">
+      Tady bude mapa a kontaktni formular
+    </div>
+  </Container>
+</Layout>

@@ -1,0 +1,50 @@
+---
+import { Image } from "astro:assets";
+import testI from "../assets/001.jpg";
+import ImagePreview from "./ui/imagePreview.astro";
+
+const setUp = {
+  start: 3,
+  end: 10,
+  cols: "1",
+  mdCols: "2",
+  lgCols: "3",
+};
+
+const allPosts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+---
+
+<div class="flex flex-col mx-auto">
+  <h2 class="font-bold text-3xl text-gray-800">Galerie</h2>
+  <p class="text-lg leading-relaxed text-slate-500">
+    We're a multi-cultural team from around the world! We come from diverse
+    backgrounds, bringing different personalities, experiences and skills to the
+    job. This is what makes our team so special.
+  </p>
+</div>
+<div class="grid md:grid-cols-4 gap-3 mx-auto max-w-4xl mt-12">
+  {
+    allPosts.map((teamMemberEntry) => (
+      <div class="group">
+        <div class="w-full aspect-square">
+          <a href={`/galerie/rover`} class="postcard-link not-prose">
+            <article class={`postcard-article`}>
+              <div class={`postcard-image-container`}>
+                <Image
+                  title={"asdasdasgb"}
+                  quality={"low"}
+                  src={testI}
+                  alt={"asdasd"}
+                  width={400}
+                  height={200}
+                  sizes="(max-width: 800px) 100vw, 400px"
+                  class="w-full rounded-md object-cover transition hover:-translate-y-1 hover:shadow-xl aspect-square"
+                />
+              </div>
+            </article>
+          </a>
+        </div>
+      </div>
+    ))
+  }
+</div>
