@@ -1,0 +1,23 @@
+---
+import Contactform from "../../components/contactform.astro";
+import Container from "../../components/container.astro";
+import Sectionhead from "../../components/sectionhead.astro";
+import Steps from "../../components/ui/steps.astro";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Prihlaseni">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Přihlášení na řidičské kurzy</Fragment>
+      <Fragment slot="desc">
+        Před oficiálním přihlášením do řidičského kurzu skupiny B (osobní
+        automobily) musí každý zájemce vyplnit online rezervaci. Po úspěšném
+        vyplnění a zaslání rezervace dostane student email s dalšími informacemi
+        a pokyny.
+      </Fragment>
+    </Sectionhead>
+    <Steps />
+    <h1>// React app // contactform //</h1>
+  </Container>
+</Layout>

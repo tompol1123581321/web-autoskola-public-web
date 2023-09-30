@@ -1,0 +1,14 @@
+---
+export function getStaticPaths() {
+  return [
+    { params: { name: "clifford", id: "1" } },
+    { params: { name: "rover", id: "2" } },
+  ];
+}
+
+const { name, id } = Astro.params;
+---
+
+<div>
+  Good dog here will be full size gallery img with controlls, {name} + {id}!
+</div>
