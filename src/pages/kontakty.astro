@@ -1,20 +1,95 @@
 ---
-import Container from "../components/container.astro";
-import Sectionhead from "../components/sectionhead.astro";
+import Icon from "astro-icon";
 import Layout from "../layouts/Layout.astro";
+import Container from "../components/container.astro";
+
+const meta = {
+  title: "O nás",
+  description: "Popis stránky",
+  canonical: "",
+};
 ---
 
 <Layout title="Kontakty">
   <Container>
-    <Sectionhead>
-      <Fragment slot="title">Kontakty</Fragment>
-      <Fragment slot="desc">
-        Nebojte se nás kontaktovat, nebo navštívit s dotazem.
-      </Fragment>
-    </Sectionhead>
+    <div class="max-h-screen max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="py-12 md:py-5">
+        <div class="text-center pb-5 md:pb-8">
+          <h1
+            class="text-5xl md:text-[3.50rem] font-bold leading-tighter tracking-tighter mb-4 font-heading">
+            Kontakty
+          </h1>
+        </div>
+        <div
+          class="px-4 py-16 mx-auto max-w-6xl lg:px-8 lg:py-20 bg-primary-50">
+          <div class="grid mx-auto space-y-6 md:grid-cols-2 md:space-y-0">
+            <div class="space-y-8 sm:px-8">
+              <div class="flex flex-row max-w-md">
+                <div class="mb-4 mr-4">
+                  <div
+                    class="flex items-center justify-center w-12 h-12 rounded-full bg-primary-500">
+                    <Icon name="tabler:home" class="w-7 h-7 text-slate-900" />
+                  </div>
+                </div>
+                <div>
+                  <h3 class="mb-3 text-xl font-bold">Kde nás najdete</h3>
+                  <p>Autoškola Luboš Hlaváček</p>
+                  <p>Komenského 40</p>
+                  <p>258 01 Vlašim, okr. Benešov u Prahy</p>
+                </div>
+              </div>
+            </div>
+            <div class="space-y-8 sm:px-8">
+              <div class="flex flex-row max-w-md">
+                <div class="mb-4 mr-4">
+                  <div
+                    class="flex items-center justify-center w-12 h-12 rounded-full bg-primary-500">
+                    <Icon name="tabler:phone" class="w-7 h-7 text-slate-900" />
+                  </div>
+                </div>
+                <div>
+                  <h3 class="mb-3 text-xl font-bold">Kontaktní údaje</h3>
+                  <h5><b>Kancelář:</b></h5>
+                  <ul class="ml-4">
+                    <li>603 928 674</li>
+                    <li>604 848 151</li>
+                  </ul>
+                  <h5><b>Učitelé:</b></h5>
+                  <ul class="ml-4">
+                    <li>Luboš Hlaváček - 605 772 285</li>
+                    <li>Ilona Švárová - 602 888 017</li>
+                  </ul>
+                  <h5><b>Email:</b></h5>
+                  <ul class="ml-4">
+                    <li>autoskola.hlavacek@seznam.cz</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="space-y-8 sm:px-8 w-full">
+            <!-- styling flex -->
 
-    <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-16">
-      Tady bude mapa a kontaktni formular
+            <div class="w-full mt-10">
+              <div class="flex items-center">
+                <div
+                  class="flex items-center justify-center w-12 h-12 rounded-full bg-primary-500">
+                  <Icon name="tabler:map" class="w-7 h-7 text-slate-900" />
+                </div>
+                <h3 class="mb-3 ml-3 text-xl font-bold">Mapa</h3>
+              </div>
+              <div class="relative mb-4 m-auto max-w-3xl">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d33140.665773965935!2d14.897796999999999!3d49.705245000000005!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470c88327e0e33d1%3A0x6c30ed645228e93!2zS29tZW5za8OpaG8gNDAsIDI1OCAwMSBWbGHFoWltLCDEjGVza28!5e1!3m2!1scs!2sus!4v1668686750931!5m2!1scs!2sus"
+                  style="border:0; border-radius: 12px;margin: auto; margin-top: 2rem; max-width: 100%; width: 600px ;height: 450px;"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </Container>
 </Layout>

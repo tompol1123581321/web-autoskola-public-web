@@ -1,4 +1,7 @@
 ---
+import Icon from "astro-icon";
+import Link from "../../components/ui/link.astro";
+
 export function getStaticPaths() {
   return [
     { params: { name: "clifford", id: "1" } },
@@ -9,6 +12,35 @@ export function getStaticPaths() {
 const { name, id } = Astro.params;
 ---
 
-<div>
-  Good dog here will be full size gallery img with controlls, {name} + {id}!
+<div class="flex justify-between items-center h-screen w-screen bg-black">
+  <Link
+    href="#"
+    href="https://web3templates.com/templates/astroship-starter-website-template-for-astro"
+    target="_blank"
+    class="absolute right-0 top-0 flex gap-1 items-center justify-center"
+    rel="noopener">
+    <Icon class="text-red-700 w-10" name="fa-solid:times" />
+  </Link>
+  <Link
+    href="#"
+    href="https://web3templates.com/templates/astroship-starter-website-template-for-astro"
+    target="_blank"
+    class="absolute left-0 flex gap-1 items-center justify-center"
+    rel="noopener">
+    <Icon class="text-slate-500 w-10" name="fa:arrow-left" />
+  </Link>
+  <img
+    draggable="true"
+    class="max-w-full max-h-full m-auto"
+    alt="A bird."
+    src="https://www.alimentarium.org/sites/default/files/media/image/2017-02/AL027-01_pomme_de_terre_0_0.jpg"
+  />
+  <Link
+    href="#"
+    href="https://web3templates.com/templates/astroship-starter-website-template-for-astro"
+    target="_blank"
+    class="absolute right-0 flex gap-1 items-center justify-center"
+    rel="noopener">
+    <Icon class="text-slate-500 w-10" name="fa:arrow-right" />
+  </Link>
 </div>
