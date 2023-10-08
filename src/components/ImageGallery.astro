@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import testI from "../assets/001.jpg";
 import ImagePreview from "./ui/imagePreview.astro";
+import type { GallerySectionData } from "../models/home";
 
 const setUp = {
   start: 3,
@@ -11,31 +12,31 @@ const setUp = {
   lgCols: "3",
 };
 
-const allPosts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+type Props = GallerySectionData;
+
+const { galleryImages, galleyText } = Astro.props;
 ---
 
 <section id="gallery">
   <div class="flex flex-col mx-auto mt-12">
     <h2 class="font-bold text-3xl text-gray-800">Galerie</h2>
     <p class="text-lg leading-relaxed text-slate-500">
-      We're a multi-cultural team from around the world! We come from diverse
-      backgrounds, bringing different personalities, experiences and skills to
-      the job. This is what makes our team so special.
+      {galleyText}
     </p>
   </div>
   <div class="grid md:grid-cols-4 gap-3 mx-auto max-w-4xl mt-12">
     {
-      allPosts.map((teamMemberEntry) => (
+      galleryImages.map(({ alt, id, name, src }) => (
         <div class="group">
           <div class="w-full aspect-square">
-            <a href={`/galerie/rover-2`} class="postcard-link not-prose">
+            <a href={`/galerie/${name}-${id}`} class="postcard-link not-prose">
               <article class={`postcard-article`}>
                 <div class={`postcard-image-container`}>
                   <Image
-                    title={"asdasdasgb"}
+                    title={name}
                     quality={"low"}
-                    src={"https://example.com/remote-bird.jpg"}
-                    alt={"asdasd"}
+                    src={src}
+                    alt={alt}
                     width={400}
                     height={200}
                     sizes="(max-width: 800px) 100vw, 400px"
