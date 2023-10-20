@@ -9,7 +9,7 @@ const isActive = Astro.url.pathname === path;
 <li>
   <a
     href={path}
-    class=`flex lg:px-3 py-2 hover:text-gray-900 ${isActive ? "text-gray-1000":"text-gray-600 "}`>
+    class=`flex lg:px-3 py-2 hover:text-gray-900 ${isActive ? "text-gray-1000 underline underline-offset-2":"text-gray-600 "}`>
     {title}
   </a>
 </li>
