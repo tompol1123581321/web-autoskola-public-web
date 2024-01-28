@@ -3,6 +3,7 @@ import Container from "../../components/container.astro";
 import Sectionhead from "../../components/sectionhead.astro";
 import Steps from "../../components/ui/steps.astro";
 import Layout from "../../layouts/Layout.astro";
+import { App as RegisterForm } from "../../react-components/react-register-form/App";
 ---
 
 <Layout title="Přihlášení">
@@ -17,6 +18,14 @@ import Layout from "../../layouts/Layout.astro";
       </Fragment>
     </Sectionhead>
     <Steps />
-    <h1>// React app // contactform //</h1>
+    <section id="register_form">
+      <div class="mt-12">
+        <h2
+          class="text-2xl text-center mb-12 lg:text-5xl font-bold lg:tracking-tight">
+          Registrační formulář
+        </h2>
+      </div>
+      <RegisterForm client:load />
+    </section>
   </Container>
 </Layout>
