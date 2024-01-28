@@ -1,3 +1,5 @@
+import { DEFAULT_PRICE_LIST } from "../constants/defaultValues";
+
 enum SpecificWebSettings {
   "PRICE_LIST" = "priceList",
   "IMAGES" = "images",
@@ -7,7 +9,7 @@ enum SpecificWebSettings {
 const getWebSettings = async (specificDataName: SpecificWebSettings) => {
   switch (specificDataName) {
     case SpecificWebSettings.PRICE_LIST:
-      return [{ name: "", price: "", additionalMessage: "" }];
+      return DEFAULT_PRICE_LIST;
 
     case SpecificWebSettings.IMAGES:
       return [{ url: "", title: "" }];

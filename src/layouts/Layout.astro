@@ -13,11 +13,25 @@ const canonicalURL = new URL(Astro.url.href, Astro.site).toString();
 const { title } = Astro.props;
 
 const makeTitle = title
-  ? title + " | " + "Astroship"
+  ? title + " | " + "Autoškola Hlaváček"
   : "Astroship - Starter Template for Astro with Tailwind CSS";
 ---
 
-<!doctype html>
+<style>
+  .bg {
+    position: relative;
+    overflow: auto; /* Enable scrolling for the content */
+
+    background-image: linear-gradient(
+      95.2deg,
+      rgb(225, 247, 241) 26.8%,
+      rgb(248, 225, 207) 84%
+    );
+    background-size: cover;
+    background-position: center;
+  }
+</style>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -42,7 +56,7 @@ const makeTitle = title
       }}
     />
   </head>
-  <body>
+  <body class="bg">
     <Navbar />
 
     <slot />

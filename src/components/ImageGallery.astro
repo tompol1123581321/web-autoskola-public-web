@@ -1,18 +1,11 @@
 ---
 import { Image } from "astro:assets";
 import type { GallerySectionData } from "../models";
+import { IMAGE_DATA_HOLDER } from "../helpers/imageDataHolder";
 
-const setUp = {
-  start: 3,
-  end: 10,
-  cols: "1",
-  mdCols: "2",
-  lgCols: "3",
-};
+type Props = Omit<GallerySectionData, "galleryImages">;
 
-type Props = GallerySectionData;
-
-const { galleryImages, galleyText } = Astro.props;
+const { galleyText } = Astro.props;
 ---
 
 <section id="gallery">
@@ -22,12 +15,13 @@ const { galleryImages, galleyText } = Astro.props;
       {galleyText}
     </p>
   </div>
-  <div class="grid md:grid-cols-4 gap-3 mx-auto max-w-4xl mt-12">
+  <div
+    class="grid md:grid-cols-5 sm: grid-cols-3 gap-10 mx-auto max-w-5xl mt-12">
     {
-      galleryImages.map(({ alt, id, name, src }) => (
+      IMAGE_DATA_HOLDER.map(({ alt, id, name, src }) => (
         <div class="group">
           <div class="w-full aspect-square">
-            <a href={`/galerie/${name}-${id}`} class="postcard-link not-prose">
+            <a href={`/galerie/${id}`} class="postcard-link not-prose ">
               <article class={`postcard-article`}>
                 <div class={`postcard-image-container`}>
                   <Image
@@ -35,9 +29,9 @@ const { galleryImages, galleyText } = Astro.props;
                     quality={"low"}
                     src={src}
                     alt={alt}
-                    width={400}
-                    height={200}
-                    sizes="(max-width: 800px) 100vw, 400px"
+                    width={200}
+                    height={100}
+                    sizes="(max-width: 400px) 100vw, 300px"
                     class="w-full rounded-md object-cover transition hover:-translate-y-1 hover:shadow-xl aspect-square"
                   />
                 </div>
@@ -49,3 +43,4 @@ const { galleryImages, galleyText } = Astro.props;
     }
   </div>
 </section>
+ ../constants/imageDataHolder ../helpers/imageDataHolder
