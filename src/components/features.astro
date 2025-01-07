@@ -1,59 +1,46 @@
 ---
-// @ts-ignore
 import { Icon } from "astro-icon";
 
+// Vytvoříme "feature" karty s informacemi z původního webu
 const features = [
   {
-    title: "Bring Your Own Framework",
+    title: "Školení řidičů",
     description:
-      "Build your site using React, Svelte, Vue, Preact, web components, or just plain ol' HTML + JavaScript.",
+      "Ve spolupráci se školicím střediskem Todat s.r.o. provádíme pravidelná profesní školení řidičů dle zákona 247/2000 Sb.",
     icon: "bx:bxs-badge-check",
   },
   {
-    title: "100% Static HTML, No JS",
+    title: "Motorkářské skupiny",
     description:
-      "Astro renders your entire page to static HTML, removing all JavaScript from your final build by default.",
+      "Od 1.6.2021 provádíme z motorkářských skupin pouze rozšíření formou doplňkové zkoušky ze sk. A1/A2 a A2/A.",
     icon: "bx:bxs-window-alt",
   },
   {
-    title: "On-Demand Components",
+    title: "Přihlašování na kurzy",
     description:
-      "Need some JS? Astro can automatically hydrate interactive components when they become visible on the page.  ",
+      "Pro online rezervaci použijte náš formulář v sekci Jak se přihlásit. Informace na tel. 603 928 674.",
     icon: "bx:bxs-data",
   },
   {
-    title: "Broad Integration",
+    title: "Tipy pro výběr autoškoly",
     description:
-      "Astro supports TypeScript, Scoped CSS, CSS Modules, Sass, Tailwind, Markdown, MDX, and any other npm packages.",
-    icon: "bx:bxs-bot",
-  },
-  {
-    title: "SEO Enabled",
-    description:
-      "Automatic sitemaps, RSS feeds, pagination and collections take the pain out of SEO and syndication. It just works!",
+      "Nekupujete si rohlík za dvě koruny. Zjistěte si, jak a kde probíhá výuka teorie, jaké vybavení má učebna a dejte i na doporučení přátel.",
     icon: "bx:bxs-file-find",
   },
-  {
-    title: "Community",
-    description:
-      "Astro is an open source project powered by hundreds of contributors making thousands of individual contributions.",
-    icon: "bx:bxs-user",
-  },
+
 ];
 ---
 
-<section id="news">
-  <div class="mt-12">
-    <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
-      Everything you need to start a website
-    </h2>
-    <p class="text-lg mt-4 text-slate-600">
-      Astro comes batteries included. It takes the best parts of
-      state-of-the-art tools and adds its own innovations.
+<section id="news" class="mt-12">
+  <div>
+    <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">Další informace</h2>
+    <p class="text-lg mt-4 text-slate-600 max-w-3xl">
+      Níže najdete důležité informace o provozu autoškoly, možnostech školení
+      a několik rad, jak správně vybrat autoškolu. 
     </p>
   </div>
 
-  <div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
+  <div class="grid sm:grid-cols-2 md:grid-cols-2 mt-16 gap-16">
     {
       features.map((item) => (
         <div class="flex gap-4 items-start">
@@ -61,8 +48,8 @@ const features = [
             <Icon class="text-white" name={item.icon} />
           </div>
           <div>
-            <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
-            <p class="text-slate-500 mt-2 leading-relaxed">
+            <h3 class="font-semibold text-lg">{item.title}</h3>
+            <p class="text-slate-500 mt-2 leading-relaxed whitespace-pre-line">
               {item.description}
             </p>
           </div>
