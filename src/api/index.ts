@@ -1,31 +1,24 @@
+import type { WebSettings } from "autoskola-web-shared-models";
 import { DEFAULT_PRICE_LIST } from "../constants/defaultValues";
 
 enum SpecificWebSettings {
   "PRICE_LIST" = "priceList",
-  "IMAGES" = "images",
-  "ALL" = "all",
 }
 
 const getWebSettings = async (specificDataName: SpecificWebSettings) => {
-  switch (specificDataName) {
-    case SpecificWebSettings.PRICE_LIST:
-      return DEFAULT_PRICE_LIST;
-
-    case SpecificWebSettings.IMAGES:
-      return [{ url: "", title: "" }];
-
-    case SpecificWebSettings.ALL:
-    default:
-      break;
+  try {
+    const response = await fetch(
+      "https://web-autoskola-server.deno.dev/api/currentWebSettings",
+    );
+    const webSettings: WebSettings = await response.json();
+    console.log(webSettings[specificDataName]);
+    return webSettings[specificDataName];
+  } catch (error) {
+    console.error(error);
+    return DEFAULT_PRICE_LIST;
   }
 };
 
 export const getPriceListData = async () => {
   return await getWebSettings(SpecificWebSettings.PRICE_LIST);
 };
-
-export const getImageDataData = async () => {
-  return await getWebSettings(SpecificWebSettings.IMAGES);
-};
-
-// export const getPriceListData = () => {};
