@@ -1,9 +1,7 @@
 // components/RegistrationForm/RegistrationForm.tsx
 import React, { useState } from "react";
-import { NameFields } from "./NameFields";
-import { ContactFields } from "./ContactFields";
-import { TermAndGdpFields } from "./TermAndGdpFields";
-import { RegistrationResultMessage } from "./RegistrationResultMessage";
+import { ContactFields } from "./form-fields/ContactFields";
+import { RegistrationResultMessage } from "./result-message/RegistrationResultMessage";
 
 import {
   DEFAULT_ERROR_VALUES,
@@ -15,7 +13,9 @@ import {
 import { validator } from "../validation";
 import type { RegistrationFormData, FieldKey, ArrayReason } from "../types";
 import { postNewRegistration } from "../api";
-import { NotesField } from "./NotesFields";
+import { NotesField } from "./form-fields/NotesFields";
+import { NameFields } from "./form-fields/NameFields";
+import { TermAndGdpFields } from "./form-fields/TermAndGdpFields";
 
 export const RegistrationForm: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);

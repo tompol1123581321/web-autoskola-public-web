@@ -1,6 +1,6 @@
 import React from "react";
-import type { RegistrationFormData, FieldKey } from "../types";
-import { periodSelectOptions } from "../constants";
+import type { RegistrationFormData, FieldKey } from "../../types";
+import { periodSelectOptions } from "../../constants";
 
 interface TermAndGdpFieldsProps {
   formValues: RegistrationFormData;

@@ -1,6 +1,6 @@
 // components/RegistrationForm/NameFields.tsx
 import React from "react";
-import type { RegistrationFormData, FieldKey, ArrayReason } from "../types";
+import type { RegistrationFormData, FieldKey, ArrayReason } from "../../types";
 
 interface NameFieldsProps {
   formValues: RegistrationFormData;

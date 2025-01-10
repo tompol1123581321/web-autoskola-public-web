@@ -11,7 +11,6 @@ const getWebSettings = async (specificDataName: SpecificWebSettings) => {
       "https://web-autoskola-server.deno.dev/api/currentWebSettings",
     );
     const webSettings: WebSettings = await response.json();
-    console.log(webSettings[specificDataName]);
     return webSettings[specificDataName];
   } catch (error) {
     console.error(error);

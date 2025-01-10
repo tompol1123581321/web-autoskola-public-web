@@ -1,6 +1,6 @@
 // components/RegistrationForm/NotesField.tsx
 import React from "react";
-import type { RegistrationFormData, FieldKey } from "../types";
+import type { RegistrationFormData, FieldKey } from "../../types";
 
 interface NotesFieldProps {
   formValues: RegistrationFormData;

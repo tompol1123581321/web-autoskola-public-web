@@ -1,6 +1,6 @@
 // components/RegistrationForm/ContactFields.tsx
 import React from "react";
-import type { RegistrationFormData, FieldKey, ArrayReason } from "../types";
+import type { RegistrationFormData, FieldKey, ArrayReason } from "../../types";
 
 interface ContactFieldsProps {
   formValues: RegistrationFormData;
