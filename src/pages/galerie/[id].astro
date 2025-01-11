@@ -11,7 +11,7 @@ export function getStaticPaths() {
 const { id } = Astro.params;
 
 const { alt, description, position, src } = IMAGE_DATA_HOLDER.find(
-  (data) => String(data.id) === id,
+  (data) => String(data.id) === id
 ) as any;
 
 const nextImageUrl =
@@ -28,6 +28,7 @@ const homeUrl = "/#gallery";
     href={homeUrl}
     id="home"
     class="absolute top-4 right-4 text-red-700 hover:text-red-500 transition-colors"
+    view-transition
   >
     <Icon name="fa-solid:times" class="w-6 h-6" />
   </Link>
@@ -37,12 +38,14 @@ const homeUrl = "/#gallery";
     id="prev"
     href={prevImageUrl}
     class="absolute left-4 text-slate-500 hover:text-slate-300 transition-colors"
+    view-transition
   >
     <Icon name="fa:arrow-left" class="w-6 h-6" />
   </Link>
 
-  <!-- The Image (never deformed) -->
+  <!-- The Image (mark as shared element) -->
   <Image
+    view-transition-name="gallery-image"
     src={src}
     alt={alt}
     quality="max"
@@ -54,12 +57,14 @@ const homeUrl = "/#gallery";
     id="next"
     href={nextImageUrl}
     class="absolute right-4 text-slate-500 hover:text-slate-300 transition-colors"
+    view-transition
   >
     <Icon name="fa:arrow-right" class="w-6 h-6" />
   </Link>
 </div>
 
 <script>
+  // Allow arrow keys & Esc to navigate
   document.addEventListener("keydown", (e) => {
     const key = e.key;
     let clickableElement:HTMLAnchorElement|null = null;

@@ -1,16 +1,6 @@
-export type Periods = "december" | "march" | "june" | "september";
-export type RegistrationFormData = {
-  firstName: string;
-  lastName: string;
-  phone: string;
-  eMail: string;
-  notes: string;
-  term: Periods;
-  gdp?: string;
-};
+import type { RegistrationFormData } from "autoskola-web-shared-models";
 
-export type FieldKey = keyof RegistrationFormData;
-export type ArrayReason = Array<"format" | "required" | "unknown">;
-export type FormProps = {
-  config: { tamplateId: string; serviceId: string; userPublicKey: string };
-};
+export type ClientRegistrationFormData = Omit<
+  RegistrationFormData,
+  "id" | "registrationDate"
+> & { gdpr: boolean };

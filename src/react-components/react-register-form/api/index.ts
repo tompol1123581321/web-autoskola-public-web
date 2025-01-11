@@ -1,6 +1,7 @@
-import type { Periods, RegistrationFormData } from "../types";
+import type { TermOption } from "autoskola-web-shared-models";
+import type { ClientRegistrationFormData } from "../types";
 
-export const postNewRegistration = async (data: RegistrationFormData) => {
+export const postNewRegistration = async (data: ClientRegistrationFormData) => {
   try {
     const response = await fetch("", {
       method: "POST",
@@ -18,14 +19,6 @@ export const postNewRegistration = async (data: RegistrationFormData) => {
       };
     }
 
-    if (response.status === 409) {
-      return {
-        result: null,
-        message:
-          "A user with the same email, phone, or name is already registered.",
-      };
-    }
-
     return {
       result: null,
       message: `Registration failed: ${response.statusText}`,
@@ -38,9 +31,7 @@ export const postNewRegistration = async (data: RegistrationFormData) => {
   }
 };
 
-export const getTermOptions = async (): Promise<
-  Array<{ label: string; value: Periods }>
-> => {
+export const getTermOptions = async (): Promise<Array<TermOption>> => {
   const response = await fetch("");
   const termOptions = await response.json();
   return termOptions;

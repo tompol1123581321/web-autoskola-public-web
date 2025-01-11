@@ -1,35 +1,32 @@
-// components/RegistrationForm/NotesField.tsx
 import React from "react";
-import type { RegistrationFormData, FieldKey } from "../../types";
+import type { UseFormRegister, FieldErrorsImpl } from "react-hook-form";
+import type { ClientRegistrationFormData } from "../../types";
 
 interface NotesFieldProps {
-  formValues: RegistrationFormData;
-  onChange: (
-    e: React.ChangeEvent<
-      HTMLInputElement & HTMLSelectElement & HTMLTextAreaElement
-    >,
-  ) => void;
+  register: UseFormRegister<ClientRegistrationFormData>;
+  errors: FieldErrorsImpl<ClientRegistrationFormData>;
 }
 
-export const NotesField: React.FC<NotesFieldProps> = ({
-  formValues,
-  onChange,
-}) => {
+export const NotesField: React.FC<NotesFieldProps> = ({ register, errors }) => {
   return (
-    <div className="flex flex-wrap -mx-3 mb-6">
-      <div className="w-full px-3">
+    <div className="flex flex-wrap -mx-3 mb-2">
+      <div className="w-full px-3 mb-4">
         <label
-          className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-          htmlFor="grid-notes">
-          Poznámky:
+          htmlFor="notes"
+          className="block text-sm font-medium text-gray-700">
+          Poznámky
         </label>
         <textarea
-          rows={5}
-          name="notes"
-          onChange={onChange}
-          value={formValues.notes}
-          className="appearance-none block w-full bg-gray-50 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+          id="notes"
+          rows={4}
+          className={`form-textarea mt-1 block w-full ${errors.notes ? "border-red-500" : ""}`}
+          {...register("notes")}
         />
+        {errors.notes && (
+          <p className="text-red-500 text-xs italic mt-1">
+            {errors.notes.message}
+          </p>
+        )}
       </div>
     </div>
   );

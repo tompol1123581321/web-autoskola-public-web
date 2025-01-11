@@ -1,9 +1,3 @@
--> Refactor register form react islands
--> Connect register form to BE server
-        - getting options
-        - sending registrations
-
-
 -> Updatovat documenty
 -> Upravit texty, fotografie
 -> Pridat page transitions

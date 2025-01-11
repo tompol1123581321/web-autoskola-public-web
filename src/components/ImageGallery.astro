@@ -1,9 +1,8 @@
 ---
 import { Image } from "astro:assets";
-import type { GallerySectionData } from "../models";
 import { IMAGE_DATA_HOLDER } from "../helpers/imageDataHolder";
 
-type Props = Omit<GallerySectionData, "galleryImages">;
+type Props = Omit<{galleyText:string}, "galleryImages">;
 
 const { galleyText } = Astro.props;
 ---

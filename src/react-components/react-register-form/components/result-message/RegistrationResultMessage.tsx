@@ -1,13 +1,14 @@
 import React from "react";
 
 interface RegistrationResultMessageProps {
-  registrationResult: "success" | "fail" | null;
+  registrationResult: { success: boolean; message: string } | null;
 }
 
 export const RegistrationResultMessage: React.FC<
   RegistrationResultMessageProps
 > = ({ registrationResult }) => {
-  if (registrationResult === "success") {
+  if (!registrationResult) return null;
+  if (registrationResult.success) {
     return (
       <div
         className="bg-green-100 border border-green-600 text-green-700 px-3 py-3 flex justify-center items-center rounded"
@@ -29,16 +30,15 @@ export const RegistrationResultMessage: React.FC<
         </div>
       </div>
     );
-  } else if (registrationResult === "fail") {
+  } else {
     return (
       <div
         className="bg-red-100 border border-red-500 text-red-700 px-3 py-3 rounded"
         role="alert">
         <p className="text-sm">Registrace selhala.</p>
+        <p className="text-sm">{registrationResult.message}</p>
         <p className="text-sm">Kontaktujte 603928674</p>
       </div>
     );
   }
-
-  return null;
 };
