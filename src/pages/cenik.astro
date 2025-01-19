@@ -3,8 +3,9 @@ import { getPriceListData } from "../api/index";
 import Layout from "../layouts/Layout.astro";
 import Container from "../components/container.astro";
 import Sectionhead from "../components/sectionhead.astro";
+import type { WebSettings } from "autoskola-web-shared-models";
 
-const priceListData = await getPriceListData()
+const priceListData:WebSettings['priceList'] = await getPriceListData()
 ---
 
 <Layout title="Ceník">
