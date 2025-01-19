@@ -10,8 +10,8 @@ const getWebSettings = async (specificDataName: SpecificWebSettings) => {
     const response = await fetch(
       "https://web-autoskola-server.deno.dev/api/webSettings",
     );
-    const webSettings: WebSettings = await response.json();
-    return webSettings[specificDataName];
+    const webSettings = await response.json();
+    return webSettings[0][specificDataName];
   } catch (error) {
     console.log(error);
     return DEFAULT_PRICE_LIST;
