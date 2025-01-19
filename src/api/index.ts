@@ -13,7 +13,7 @@ const getWebSettings = async (specificDataName: SpecificWebSettings) => {
     const webSettings: WebSettings = await response.json();
     return webSettings[specificDataName];
   } catch (error) {
-    console.error(error);
+    console.log(error);
     return DEFAULT_PRICE_LIST;
   }
 };

@@ -5,7 +5,7 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), react()],
-  experimental: { viewTransitions: true },
+  // experimental: { viewTransitions: true },
   image: {
     service: passthroughImageService(),
   },
