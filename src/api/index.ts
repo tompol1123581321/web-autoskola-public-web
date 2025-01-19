@@ -8,7 +8,7 @@ enum SpecificWebSettings {
 const getWebSettings = async (specificDataName: SpecificWebSettings) => {
   try {
     const response = await fetch(
-      "https://web-autoskola-server.deno.dev/api/currentWebSettings",
+      "https://web-autoskola-server.deno.dev/api/webSettings",
     );
     const webSettings: WebSettings = await response.json();
     return webSettings[specificDataName];
