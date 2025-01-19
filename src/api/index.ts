@@ -8,11 +8,11 @@ enum SpecificWebSettings {
 const getWebSettings = async (specificDataName: SpecificWebSettings) => {
   try {
     const response = await fetch(
-      "https://web-autoskola-server.deno.dev/api/webSettings",
+      "https://web-autoskola-server.deno.dev/api/webSettings/current",
     );
     const webSettings = await response.json();
     console.log(webSettings);
-    return webSettings[0][specificDataName];
+    return webSettings[specificDataName];
   } catch (error) {
     console.log(error);
     return DEFAULT_PRICE_LIST;
