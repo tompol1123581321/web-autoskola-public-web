@@ -1,0 +1,133 @@
+---
+import { Image } from "astro:assets";
+// Ukázkové importy obrázků, můžete je nahradit vlastními.
+import ilona from "../assets/IlonaSvarova.jpeg";
+import lenka from "../assets/LenkaBurdova.jpeg";
+
+import ImageGallery from "../components/ImageGallery.astro";
+import Container from "../components/container.astro";
+import Features from "../components/features.astro";
+import Hero from "../components/hero.astro";
+import Layout from "../layouts/Layout.astro";
+
+// Tým pro školení profesních řidičů
+const publishedTeamMembers = [
+  {
+    data: {
+      draft: false,
+      name: "Luboš Hlaváček",
+      title: "Vedoucí učitel & Školitel profesionálních řidičů",
+      avatar: {
+        src: lenka,
+        alt: "Luboš Hlaváček",
+      },
+    },
+  },
+  {
+    data: {
+      draft: false,
+      name: "Pavla Hlaváčková",
+      title: "Administrativa & Kontakt pro přihlášky",
+      avatar: {
+        src: ilona,
+        alt: "Pavla Hlaváčková",
+      },
+    },
+  },
+];
+
+// Ukázkové "Features" lze využít např. pro výčet výhod
+const featuresList = [
+  {
+    title: "Akreditované školicí středisko",
+    description:
+      "Školení profesních řidičů dle zákona 247/2000 Sb. zajišťujeme ve spolupráci s Todat s.r.o.",
+    icon: "bx:bxs-badge-check",
+  },
+  {
+    title: "Individuální přístup",
+    description:
+      "Přihlášky na školení zpracujeme obratem, vybereme vhodný termín a zajistíme veškerou administrativu.",
+    icon: "bx:bxs-user-check",
+  },
+  {
+    title: "Odborný tým",
+    description:
+      "Naše školitele i dopravního psychologa spojuje dlouholetá praxe a profesionální přístup.",
+    icon: "bx:bxs-group",
+  },
+];
+---
+
+<Layout title="Školení profesních řidičů">
+  <Container>
+    <!-- O školení -->
+    <section id="about-training" class="mt-12">
+      <h2 class="font-bold text-3xl text-gray-800 mb-4">O školení</h2>
+      <p class="text-lg leading-relaxed text-slate-600">
+        Ve výuce a výcviku řidičů i v provádění školení profesních řidičů 
+        pokračují <strong>Autoškola Luboš Hlaváček</strong> a <strong>Todat s.r.o.</strong>.
+        Provozovna a akreditované školicí středisko řidičů se nachází v centru
+        města Vlašimi, v budově Domu obchodu a služeb Havlíček (Komenského ul. 40, 1. patro).
+      </p>
+    </section>
+
+    
+
+    <!-- Termíny & Přihlášky + iFrame s formulářem -->
+    <section id="terminy-prihlasky" class="mt-12">
+      <h2 class="font-bold text-3xl text-gray-800 mb-4">Termíny a přihlášky</h2>
+      <p class="text-lg leading-relaxed text-slate-600">
+        Aktuální termíny pravidelných školení najdete v 
+        <strong>online přihlašovacím formuláři</strong>. Pokud nenajdete
+        vhodný termín, volejte na <strong>603 928 674</strong>.
+      </p>
+
+      <p class="text-lg leading-relaxed text-slate-600 mt-4">
+        Přihlásit se můžete i osobně v kanceláři v Komenského 40,
+        258 01 Vlašim (1. patro), telefonicky nebo emailem 
+        (info@autoskoladvorak.cz, pavlahlava@seznam.cz). 
+        Přihláška musí obsahovat jméno, příjmení, datum narození,
+        adresu trvalého bydliště, číslo řidičského a profesního průkazu, 
+        skupiny a telefonní spojení.
+      </p>
+
+      <!-- Vložený iFrame s přihlašovacím formulářem -->
+      <div class="mt-8 bg-white p-4 rounded-md shadow-md">
+        <iframe 
+          src="https://www.autoskoladvorak.cz/prihlaska/" 
+          width="100%" 
+          height="1000"
+          frameborder="0"
+        >
+        </iframe>
+      </div>
+    </section>
+
+    <!-- Upozornění -->
+    <section id="upozorneni" class="mt-12">
+      <h2 class="font-bold text-3xl text-gray-800 mb-4">Upozornění</h2>
+      <p class="text-lg leading-relaxed text-slate-600">
+        Účastníci druhého (a následujícího) kurzu pravidelného školení
+        řidičů přinesou s sebou potvrzení o absolvování školení 
+        dle přílohy č. 5 k vyhlášce 156/2008 Sb. (obdržené při 
+        prvním školení). Poplatek za vystavení duplikátu potvrzení 
+        o absolvování školení je 100 Kč.
+      </p>
+    </section>
+
+    <!-- Dopravně psychologické vyšetření -->
+    <section id="psychologicke-vysetreni" class="mt-12">
+      <h2 class="font-bold text-3xl text-gray-800 mb-4">Dopravně psychologické vyšetření</h2>
+      <p class="text-lg leading-relaxed text-slate-600">
+        Ve spolupráci s <strong>PhDr. Kateřinou Noskovou</strong> 
+        zajišťujeme dopravně psychologické vyšetření. 
+        Objednávky na číslech <strong>603 928 674</strong> 
+        nebo <strong>604 848 151</strong>.
+      </p>
+      <p class="text-lg leading-relaxed text-slate-600 mt-4">
+        Termíny příštích vyšetření: 28. 8. 2024 a 25. 9. 2024 od 9:30 hod.
+      </p>
+    </section>
+  </Container>
+</Layout>

@@ -1,49 +1,83 @@
 ---
 import Icon from "astro-icon";
-import Card from "../components/Card.astro";
 import Container from "../components/container.astro";
-import Cta from "../components/cta.astro";
-import Features from "../components/features.astro";
-import Logos from "../components/logos.astro";
 import Sectionhead from "../components/sectionhead.astro";
 import Layout from "../layouts/Layout.astro";
 
-const features = [
+const resourceGroups = [
   {
-    title: "Bring Your Own Framework",
-    description:
-      "Build your site using React, Svelte, Vue, Preact, web components, or just plain ol' HTML + JavaScript.",
-    icon: "bx:bxs-badge-check",
+    title: "Dopravní bezpečnost a informace",
+    resources: [
+      {
+        title: "BESIP",
+        description: "Oficiální portál BESIP zaměřený na bezpečnost silničního provozu.",
+        href: "http://www.ibesip.cz/",
+        icon: "bx:bxs-badge-check",
+      },
+      {
+        title: "DEKRA",
+        description: "Poradenství a služby v oblasti technických kontrol vozidel.",
+        href: "http://www.dekra.cz/",
+        icon: "bx:bxs-window-alt",
+      },
+      {
+        title: "MOTOŽURNÁL",
+        description: "Rozhlasový portál zaměřený na motozprávy a dopravní informace.",
+        href: "http://www.rozhlas.cz/motozurnal/portal/",
+        icon: "bx:bxs-data",
+      },
+      {
+        title: "Zkratky elektronických systémů",
+        description: "Přehled a význam různých zkratek pro elektronické systémy ve vozidle.",
+        href: "http://www.auto.cz/esc-dcc-rbs-afs-ddd-vite-co-znamenaji-automobilove-zkratky-101809",
+        icon: "bx:bxs-help-circle",
+      },
+    ],
   },
   {
-    title: "100% Static HTML, No JS",
-    description:
-      "Astro renders your entire page to static HTML, removing all JavaScript from your final build by default.",
-    icon: "bx:bxs-window-alt",
+    title: "Asociace a organizace",
+    resources: [
+      {
+        title: "Asociace autoškol",
+        description: "Oficiální stránky Asociace autoškol ČR.",
+        href: "http://www.asociaceautoskol.cz/",
+        icon: "bx:bxs-bot",
+      },
+      {
+        title: "ÚAMK",
+        description: "Ústřední automotoklub – aktuální dopravní informace a služby.",
+        href: "http://www.uamk.cz/",
+        icon: "bx:bxs-file-find",
+      },
+    ],
   },
   {
-    title: "On-Demand Components",
-    description:
-      "Need some JS? Astro can automatically hydrate interactive components when they become visible on the page.  ",
-    icon: "bx:bxs-data",
+    title: "Online testy a hry",
+    resources: [
+      {
+        title: "Zkušební testy Ministerstva dopravy",
+        description: "Oficiální online testy pro autoškoly k procvičování dopravních předpisů.",
+        href: "http://etesty2.mdcr.cz/",
+        icon: "bx:bxs-book",
+      },
+      {
+        title: "Křižovatky hrou",
+        description: "Zábavná online aplikace pro procvičování dopravních křižovatek.",
+        href: "http://www.zakruta.cz/autoskola-hra/",
+        icon: "bx:bxs-user",
+      },
+    ],
   },
   {
-    title: "Broad Integration",
-    description:
-      "Astro supports TypeScript, Scoped CSS, CSS Modules, Sass, Tailwind, Markdown, MDX, and any other npm packages.",
-    icon: "bx:bxs-bot",
-  },
-  {
-    title: "SEO Enabled",
-    description:
-      "Automatic sitemaps, RSS feeds, pagination and collections take the pain out of SEO and syndication. It just works!",
-    icon: "bx:bxs-file-find",
-  },
-  {
-    title: "Community",
-    description:
-      "Astro is an open source project powered by hundreds of contributors making thousands of individual contributions.",
-    icon: "bx:bxs-user",
+    title: "Dokumenty ke studiu",
+    resources: [
+      {
+        title: "Skupiny platné od 7.11.2014",
+        description: "Dokument s přehledem platných řidičských skupin a podmínek.",
+        href: "http://www.hlavacekautoskola.cz/skupiny.pdf",
+        icon: "bx:bxs-file",
+      },
+    ],
   },
 ];
 ---
@@ -53,39 +87,51 @@ const features = [
     <Sectionhead>
       <Fragment slot="title">Informace pro studenty</Fragment>
       <Fragment slot="desc">
-        Nebojte se nás kontaktovat, nebo navštívit s dotazem.
+        Zde najdete užitečné odkazy a zdroje rozdělené do několika kategorií.
+        Neváhejte se na nás kdykoli obrátit s dotazy.
       </Fragment>
     </Sectionhead>
-    <Logos />
-    <Cta />
-    <section id="news">
-      <div class="mt-12">
-        <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
-          Everything you need to start a website
-        </h2>
-        <p class="text-lg mt-4 text-slate-600">
-          Astro comes batteries included. It takes the best parts of
-          state-of-the-art tools and adds its own innovations.
-        </p>
-      </div>
 
-      <div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
-        {
-          features.map((item) => (
-            <div class="flex gap-4 items-start">
-              <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0">
-                <Icon class="text-white" name={item.icon} />
+    <section id="resources" class="mt-12">
+      <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight mb-4">
+        Užitečné odkazy a materiály
+      </h2>
+      <p class="text-lg text-slate-600 mb-12">
+        Pro efektivní přípravu na výuku a závěrečné zkoušky v autoškole jsme
+        pro vás připravili výběr oficiálních portálů, organizací a online
+        nástrojů. Díky nim můžete studovat dopravní předpisy, procvičovat
+        testy nebo se informovat o nejnovějších změnách na silnicích.
+      </p>
+
+      {resourceGroups.map((group) => (
+        <div class="mb-10">
+          <h3 class="text-2xl font-semibold mb-4 text-black">
+            {group.title}
+          </h3>
+          <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+            {group.resources.map((item) => (
+              <div class="flex gap-4 items-start">
+                <div class="mt-1 bg-black rounded-full p-2 w-8 h-8 shrink-0 flex items-center justify-center">
+                  <Icon class="text-white text-xl" name={item.icon} />
+                </div>
+                <div>
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-lg font-semibold text-black hover:underline"
+                  >
+                    {item.title}
+                  </a>
+                  <p class="text-slate-500 mt-2 leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
               </div>
-              <div>
-                <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
-                <p class="text-slate-500 mt-2 leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
-            </div>
-          ))
-        }
-      </div>
+            ))}
+          </div>
+        </div>
+      ))}
     </section>
   </Container>
 </Layout>
