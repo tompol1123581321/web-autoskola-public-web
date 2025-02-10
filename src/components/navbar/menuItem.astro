@@ -4,8 +4,7 @@ const {
   item: { path, title },
 } = Astro.props;
 const astroPathName = Astro.url.pathname
-const concatPath = astroPathName.endsWith("/") ? astroPathName.substring(0,astroPathName.length-2) :astroPathName
-const isActive = concatPath  === path;
+const isActive = astroPathName.includes(path);
 ---
 
 <li>
