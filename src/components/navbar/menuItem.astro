@@ -4,7 +4,7 @@ const {
   item: { path, title },
 } = Astro.props;
 const astroPathName = Astro.url.pathname
-const isActive = astroPathName.includes(path);
+const isActive = astroPathName.startsWith(path);
 ---
 
 <li>
