@@ -4,7 +4,7 @@ const {
   item: { path, title },
 } = Astro.props;
 const astroPathName = Astro.url.pathname
-const isActive = astroPathName.startsWith(path);
+const isActive = astroPathName==="/" ? astroPathName === path :astroPathName.startsWith(path) 
 ---
 
 <li>
