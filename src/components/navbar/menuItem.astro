@@ -13,4 +13,6 @@ const isActive = astroPathName==="/" ? astroPathName === path :astroPathName.sta
     class=`flex lg:px-3 py-2 hover:text-gray-900 ${isActive ? "text-gray-1000 underline underline-offset-2":"text-gray-600 "}`>
     {title}
   </a>
+  {astroPathName} <br>
+  {path}
 </li>
