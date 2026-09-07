@@ -12,6 +12,24 @@ The public website needs the following backend capabilities:
 
 The current frontend already uses the price-list endpoint. The registration API currently contains empty `fetch("")` URLs, so the paths below are the recommended contract to implement and then configure in the frontend.
 
+## Implementation Priority
+
+Implement in this order:
+
+1. `GET /api/terms/active` so the registration form can offer selectable terms.
+2. `POST /api/registrations` so users can submit the form.
+3. `GET /api/webSettings/current` for the public price list.
+
+The frontend currently disables registration when no active term is returned. An empty term array is a valid business response, but the website should show that registration is temporarily unavailable rather than accepting a registration without a term.
+
+## Common API Rules
+
+- All responses must be UTF-8 JSON with `Content-Type: application/json`.
+- Dates must be ISO 8601 UTC strings, for example `2026-09-07T12:00:00.000Z`.
+- IDs are strings at the public API boundary, including term IDs.
+- Error messages returned to the public website must be safe for end users; never return SQL, stack traces, or internal service details.
+- Add an `X-Request-Id` response header, or return a `requestId` field in error responses, so support can trace failed submissions.
+
 ## Base URL
 
 Use one configurable public API base URL, for example:
@@ -86,6 +104,16 @@ Recommended status codes: `500` for an internal error, `503` when the settings s
 
 The frontend has a local fallback price list if this endpoint fails.
 
+### Frontend mapping
+
+The current frontend reads:
+
+```ts
+const priceListData = response.priceList;
+```
+
+The public price page expects each item to expose `label` and `value` as display strings. The initial contract should return the already formatted Czech value.
+
 ## 2. Get Active Course Terms
 
 This endpoint supplies the options displayed in the registration form.
@@ -152,6 +180,12 @@ Do not return HTML, `null`, or an object for this endpoint.
 ```
 
 Recommended status codes: `500` or `503`.
+
+### Empty and unavailable states
+
+- `200 []`: the endpoint worked and there are currently no available terms.
+- `503`: the term service could not be reached or queried.
+- Never return `200` with an HTML error page or a different JSON shape.
 
 ## 3. Create Course Registration
 
@@ -229,6 +263,17 @@ The backend must validate independently of the frontend:
 
 The frontend only requires a truthy `result` and a response `message`.
 
+### Registration transaction requirements
+
+The registration write must be atomic:
+
+1. Validate the request.
+2. Confirm that `termId` exists, is active, and still has capacity.
+3. Reserve one place for the registration.
+4. Persist the registration and server-side `registrationDate` together.
+
+Two simultaneous requests must not overbook the same term. The API should return `409` when capacity is lost between validation and persistence.
+
 ### Validation error: `422 Unprocessable Entity`
 
 ```json
@@ -265,7 +310,7 @@ Recommended status codes:
 
 ## Security and Operations
 
-- Enable CORS only for the production public-web origin and approved local development origins.
+- Enable CORS only for the production public-web origin and approved local development origins. Allow `GET`, `POST`, and the headers `Accept`, `Content-Type`, and `Idempotency-Key`.
 - Apply rate limiting to public registration endpoints.
 - Add bot protection or a honeypot to public POST endpoints.
 - Never trust `gdpr` or any validation performed in the browser.
@@ -274,6 +319,15 @@ Recommended status codes:
 - Consider an idempotency key to prevent duplicate registrations after retries.
 - Use HTTPS in every environment that handles personal data.
 - Store the registration timestamp on the server, not from the browser.
+
+Recommended CORS origins during development:
+
+```text
+http://localhost:4321
+http://127.0.0.1:4322
+```
+
+Production should use the final deployed public-web origin only.
 
 ## Frontend Integration Checklist
 
@@ -295,6 +349,19 @@ Also replace the current empty URLs in:
 ```text
 src/react-components/react-register-form/api/index.ts
 ```
+
+The frontend should send an idempotency key for registration retries:
+
+```http
+Idempotency-Key: <client-generated-unique-value>
+```
+
+The frontend must handle these states:
+
+- `200` or `201` with a truthy `result`: show success.
+- `409`: tell the user that the selected term is no longer available.
+- `422`: show field-level validation errors when provided.
+- `429`, `500`, or `503`: show a retry message and keep the entered form values.
 
 Recommended backend smoke tests:
 
