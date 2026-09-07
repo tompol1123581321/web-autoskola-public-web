@@ -9,13 +9,13 @@ interface GdprFieldProps {
 
 export const GdprField: React.FC<GdprFieldProps> = ({ register, errors }) => {
   return (
-    <div className="w-full md:w-1/2 px-3 h-12 mb-4">
+    <div className="w-full rounded-lg bg-slate-50 p-3">
       {/* One row for checkbox + label */}
       <div className="flex items-center">
         <input
           id="gdpr"
           type="checkbox"
-          className={`form-checkbox h-4 w-4 text-indigo-600 ${
+          className={`mt-0.5 h-4 w-4 shrink-0 rounded border-gray-300 text-blue-700 focus:ring-blue-600 ${
             errors.gdpr ? "border-red-500" : ""
           }`}
           {...register("gdpr")}

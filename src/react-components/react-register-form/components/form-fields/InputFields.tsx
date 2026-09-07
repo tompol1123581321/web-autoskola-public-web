@@ -13,7 +13,7 @@ export const InputFields: React.FC<InputFieldsProps> = ({
   errors,
 }) => {
   return (
-    <div className="flex flex-wrap -mx-3 mb-2">
+    <div className="mb-1 grid gap-4 md:grid-cols-2">
       <GenericFieldWithValidation
         type="text"
         label="Jméno"
@@ -33,7 +33,7 @@ export const InputFields: React.FC<InputFieldsProps> = ({
       />
 
       <GenericFieldWithValidation
-        label="Email"
+        label="E-mail"
         name="email"
         type="email"
         register={register}

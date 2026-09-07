@@ -19,11 +19,11 @@ export const DEFAULT_PRICE_LIST = [
     value: "900 Kč",
   },
   {
-    label: "Přezkoušení z odborné způsobilosti (vrácení ŘP) – sk.B",
+    label: "Přezkoušení z odborné způsobilosti (vrácení ŘP) – sk. B",
     value: "4 900 Kč",
   },
   {
-    label: "Přezkoušení z odborné způsobilosti (vrácení ŘP) – sk.B + A",
+    label: "Přezkoušení z odborné způsobilosti (vrácení ŘP) – sk. B + A",
     value: "10 500 Kč",
   },
   { label: "Neomluvená jízda (minimálně 24 hodin předem)", value: "300 Kč" },

@@ -8,14 +8,16 @@ import type { TermOption } from "autoskola-web-shared-models";
 import { getTermOptions, postNewRegistration } from "../api";
 
 const schema: yup.ObjectSchema<ClientRegistrationFormData> = yup.object({
-  firstName: yup.string().required("Jméno je povinné"),
-  lastName: yup.string().required("Příjmení je povinné"),
+  firstName: yup.string().trim().required("Jméno je povinné"),
+  lastName: yup.string().trim().required("Příjmení je povinné"),
   email: yup
     .string()
-    .email("Zadejte platný email")
-    .required("Email je povinný"),
+    .trim()
+    .email("Zadejte platný e-mail")
+    .required("E-mail je povinný"),
   phoneNumber: yup
     .string()
+    .transform((value) => value.replace(/\s+/g, ""))
     .required("Telefonní číslo je povinné")
     .matches(PHONE_REG, "Telefonní číslo není platné"),
 
@@ -26,8 +28,19 @@ const schema: yup.ObjectSchema<ClientRegistrationFormData> = yup.object({
   notes: yup.string().default(""),
   termId: yup.string().required("Termín kurzu je povinný"),
 });
+
+const defaultValues: ClientRegistrationFormData = {
+  email: "",
+  firstName: "",
+  gdpr: false,
+  lastName: "",
+  notes: "",
+  phoneNumber: "",
+  termId: "",
+};
+
 export const useRegistrationForm = () => {
-  const [termOptions, setTermOptions] = useState<Array<TermOption>>([]);
+  const [termOptions, setTermOptions] = useState<Array<TermOption> | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [registrationResult, setRegistrationResult] = useState<{
     success: boolean;
@@ -39,9 +52,8 @@ export const useRegistrationForm = () => {
       setIsLoading(true);
       const termOptions = await getTermOptions();
       setTermOptions(termOptions);
-    } catch (error) {
+    } catch {
       setTermOptions([]);
-      console.error(error);
     } finally {
       setIsLoading(false);
     }
@@ -59,16 +71,13 @@ export const useRegistrationForm = () => {
   } = useForm<ClientRegistrationFormData>({
     resolver: yupResolver(schema),
     mode: "onChange",
-    defaultValues: {
-      email: "",
-      firstName: "",
-      gdpr: false,
-      lastName: "",
-      notes: "",
-      phoneNumber: "",
-      termId: "",
-    },
+    defaultValues,
   });
+
+  const resetForm = useCallback(() => {
+    reset(defaultValues);
+    setRegistrationResult(null);
+  }, [reset]);
 
   const onSubmit: SubmitHandler<ClientRegistrationFormData> = useCallback(
     async (data) => {
@@ -97,7 +106,7 @@ export const useRegistrationForm = () => {
     isLoading,
     registrationResult,
     handleSubmit: handleSubmit(onSubmit),
-    reset: () => reset(),
+    reset: resetForm,
     submitDisabled: !isValid,
   };
 };

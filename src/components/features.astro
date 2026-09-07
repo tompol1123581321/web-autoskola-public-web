@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 
 // Vytvoříme "feature" karty s informacemi z původního webu
 const features = [
@@ -8,24 +8,32 @@ const features = [
     description:
       "Ve spolupráci se školicím střediskem Todat s.r.o. provádíme pravidelná profesní školení řidičů dle zákona 247/2000 Sb.",
     icon: "bx:bxs-badge-check",
+    href: "/skoleni-ridicu",
+    linkText: "Zjistit více",
   },
   {
     title: "Motorkářské skupiny",
     description:
-      "Od 1.6.2021 provádíme z motorkářských skupin pouze rozšíření formou doplňkové zkoušky ze sk. A1/A2 a A2/A.",
+      "Od 1. 6. 2021 provádíme u motorkářských skupin pouze rozšíření formou doplňkové zkoušky ze skupin A1/A2 a A2/A.",
     icon: "bx:bxs-window-alt",
+    href: "/kontakty",
+    linkText: "Zeptat se",
   },
   {
     title: "Přihlašování na kurzy",
     description:
-      "Pro online rezervaci použijte náš formulář v sekci Jak se přihlásit. Informace na tel. 603 928 674.",
+      "Pro online rezervaci použijte náš formulář. Pokud si nejste jistí výběrem kurzu, rádi poradíme.",
     icon: "bx:bxs-data",
+    href: "/prihlaseni",
+    linkText: "Přejít k přihlášce",
   },
   {
     title: "Tipy pro výběr autoškoly",
     description:
-      "Nekupujete si rohlík za dvě koruny. Zjistěte si, jak a kde probíhá výuka teorie, jaké vybavení má učebna a dejte i na doporučení přátel.",
+      "Zjistěte si, jak a kde probíhá teorie, jaké vybavení má učebna a co o autoškole říkají její žáci.",
     icon: "bx:bxs-file-find",
+    href: "/kontakty",
+    linkText: "Kontaktovat autoškolu",
   },
 
 ];
@@ -52,6 +60,12 @@ const features = [
             <p class="text-slate-500 mt-2 leading-relaxed whitespace-pre-line">
               {item.description}
             </p>
+            <a
+              class="mt-3 inline-block font-semibold text-blue-700 underline decoration-1 underline-offset-2 hover:text-blue-900"
+              href={item.href}
+            >
+              {item.linkText}
+            </a>
           </div>
         </div>
       ))

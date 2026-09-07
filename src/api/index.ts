@@ -1,4 +1,3 @@
-import type { WebSettings } from "autoskola-web-shared-models";
 import { DEFAULT_PRICE_LIST } from "../constants/defaultValues";
 
 enum SpecificWebSettings {
@@ -10,11 +9,16 @@ const getWebSettings = async (specificDataName: SpecificWebSettings) => {
     const response = await fetch(
       "https://web-autoskola-server.deno.dev/api/webSettings/current",
     );
+    if (!response.ok) {
+      throw new Error(`Web settings request failed: ${response.status}`);
+    }
+    const contentType = response.headers.get("content-type") ?? "";
+    if (!contentType.includes("application/json")) {
+      throw new Error("Web settings response was not JSON");
+    }
     const webSettings = await response.json();
-    console.log(webSettings);
     return webSettings[specificDataName];
   } catch (error) {
-    console.log(error);
     return DEFAULT_PRICE_LIST;
   }
 };

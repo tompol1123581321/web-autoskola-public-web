@@ -23,12 +23,12 @@ export const RegistrationForm: React.FC = () => {
   return (
     <form
       onSubmit={(e) => e.preventDefault()}
-      className="w-full mt-5 px-1 max-w-5xl mx-auto">
+      className="mx-auto mt-5 w-full max-w-3xl rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6 lg:p-8">
       <InputFields errors={errors} register={register} />
 
       <NotesField errors={errors} register={register} />
 
-      <div className="flex flex-wrap items-center -mx-3 mb-4">
+      <div className="mb-1 grid gap-4">
         <TermField
           errors={errors}
           register={register}

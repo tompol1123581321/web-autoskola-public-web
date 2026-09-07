@@ -37,7 +37,9 @@ export const RegistrationResultMessage: React.FC<
         role="alert">
         <p className="text-sm">Registrace selhala.</p>
         <p className="text-sm">{registrationResult.message}</p>
-        <p className="text-sm">Kontaktujte 603928674</p>
+        <p className="text-sm">
+          Kontaktujte <a href="tel:+420603928674">603 928 674</a>
+        </p>
       </div>
     );
   }

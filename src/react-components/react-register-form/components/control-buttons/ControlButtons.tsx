@@ -14,7 +14,7 @@ export const ControlButtons: React.FC<RegisterResetButtonsProps> = ({
   disabled,
 }) => {
   return (
-    <div className="flex flex-wrap -mx-3 mb-2 justify-center space-x-4">
+    <div className="flex flex-col justify-center gap-3 sm:flex-row">
       {/* "Register" button */}
       <button
         type="submit"
@@ -22,8 +22,7 @@ export const ControlButtons: React.FC<RegisterResetButtonsProps> = ({
         disabled={disabled || isLoading}
         aria-busy={isLoading}
         aria-disabled={disabled || isLoading}
-        className="btn text-white rounded h-10 w-44 bg-cyan-700 
-                   hover:bg-cyan-400 disabled:bg-gray-600">
+        className="h-11 w-full rounded-lg bg-blue-700 px-5 text-sm font-semibold text-white transition hover:bg-blue-800 disabled:bg-slate-400 sm:w-44">
         {isLoading ? "Probíhá načítání..." : "Registrovat"}
       </button>
 
@@ -32,8 +31,7 @@ export const ControlButtons: React.FC<RegisterResetButtonsProps> = ({
         onClick={onReset}
         disabled={isLoading}
         aria-disabled={isLoading}
-        className="btn text-white rounded h-10 w-44 bg-red-400 
-                   hover:bg-gray-400 disabled:bg-gray-600">
+        className="h-11 w-full rounded-lg border border-slate-300 bg-white px-5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 disabled:bg-slate-100 sm:w-44">
         Resetovat hodnoty
       </button>
     </div>

@@ -1,10 +1,6 @@
 ---
-import { Image } from "astro:assets";
-
 type DetailData = {
-  imgSrc: string;
   slugUrl: string;
-  coverAlt: string;
   title: string;
 };
 
@@ -15,21 +11,13 @@ interface Props {
 }
 
 const {
-  detailData: { coverAlt, slugUrl, imgSrc, title },
+  detailData: { slugUrl, title },
 } = Astro.props;
 ---
 
 <a href={`/${slugUrl}`} class="postcard-link not-prose">
   <article class={`postcard-article`}>
     <div class={`postcard-image-container`}>
-      <!-- <Image
-        src={imgSrc}
-        alt={coverAlt}
-        width={672}
-        height={378}
-        format="jpeg"
-        loading={"lazy"}
-      /> -->
     </div>
     <div class={`postcard-content`}>
       <h2 class="postcard-title">{title}</h2>

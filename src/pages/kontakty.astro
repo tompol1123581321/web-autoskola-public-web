@@ -1,13 +1,7 @@
 ---
-import Icon from "astro-icon";
+import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
 import Container from "../components/container.astro";
-
-const meta = {
-  title: "O nás",
-  description: "Popis stránky",
-  canonical: "",
-};
 ---
 
 <Layout title="Kontakty">
@@ -51,17 +45,17 @@ const meta = {
                   <h3 class="mb-3 text-xl font-bold">Kontaktní údaje</h3>
                   <h5><b>Kancelář:</b></h5>
                   <ul class="ml-4">
-                    <li>603 928 674</li>
-                    <li>604 848 151</li>
+                    <li><a class="underline hover:text-blue-700" href="tel:+420603928674">603 928 674</a></li>
+                    <li><a class="underline hover:text-blue-700" href="tel:+420604848151">604 848 151</a></li>
                   </ul>
                   <h5><b>Učitelé:</b></h5>
                   <ul class="ml-4">
-                    <li>Luboš Hlaváček - 605 772 285</li>
-                    <li>Ilona Švárová - 602 888 017</li>
+                    <li>Luboš Hlaváček - <a class="underline hover:text-blue-700" href="tel:+420605772285">605 772 285</a></li>
+                    <li>Ilona Švárová - <a class="underline hover:text-blue-700" href="tel:+420602888017">602 888 017</a></li>
                   </ul>
-                  <h5><b>Email:</b></h5>
+                  <h5><b>E-mail:</b></h5>
                   <ul class="ml-4">
-                    <li>autoskola.hlavacek@seznam.cz</li>
+                    <li><a class="underline hover:text-blue-700" href="mailto:autoskola.hlavacek@seznam.cz">autoskola.hlavacek@seznam.cz</a></li>
                   </ul>
                 </div>
               </div>
@@ -81,6 +75,7 @@ const meta = {
               <div class="relative mb-4 m-auto max-w-3xl">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d33140.665773965935!2d14.897796999999999!3d49.705245000000005!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470c88327e0e33d1%3A0x6c30ed645228e93!2zS29tZW5za8OpaG8gNDAsIDI1OCAwMSBWbGHFoWltLCDEjGVza28!5e1!3m2!1scs!2sus!4v1668686750931!5m2!1scs!2sus"
+                  title="Mapa autoškoly Hlaváček ve Vlašimi"
                   style="border:0; border-radius: 12px;margin: auto; margin-top: 2rem; max-width: 100%; width: 600px ;height: 450px;"
                   allowfullscreen=""
                   loading="lazy"

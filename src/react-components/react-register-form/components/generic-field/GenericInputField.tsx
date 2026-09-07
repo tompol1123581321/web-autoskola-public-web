@@ -1,5 +1,4 @@
 import type React from "react";
-import type { RegistrationFormData } from "autoskola-web-shared-models";
 import { ERROR_CLASSNAME } from "../../constants";
 import type { UseFormRegister } from "react-hook-form";
 import type { ClientRegistrationFormData } from "../../types";
@@ -23,7 +22,7 @@ export const GenericFieldWithValidation: React.FC<Props> = ({
   label,
 }) => {
   return (
-    <div className="w-full md:w-1/2 px-3 mb-4">
+    <div className="w-full">
       <div className="flex items-center mb-1">
         <label
           className="block uppercase tracking-wide text-gray-700 text-xs font-bold"
@@ -51,9 +50,9 @@ export const GenericFieldWithValidation: React.FC<Props> = ({
           type={type}
           aria-invalid={Boolean(errorMessage)}
           aria-describedby={errorMessage ? `${name}-error` : undefined}
-          className={`appearance-none block w-full bg-gray-50 text-gray-700 border ${
+          className={`block min-h-11 w-full appearance-none rounded-lg border bg-slate-50 px-3 py-2.5 text-base leading-tight text-gray-700 transition focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600 ${
             errorMessage ? ERROR_CLASSNAME : "border-gray-300"
-          } rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-500 ${
+          } ${
             errorMessage ? "pr-10 border-red-600" : ""
           }`}
           {...register(name)}

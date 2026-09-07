@@ -13,19 +13,23 @@ import { App as RegisterForm } from "../../react-components/react-register-form/
       <Fragment slot="desc">
         Před oficiálním přihlášením do řidičského kurzu skupiny B (osobní
         automobily) musí každý zájemce vyplnit online rezervaci. Po úspěšném
-        vyplnění a zaslání rezervace dostane student email s dalšími informacemi
-        a pokyny.
+        vyplnění a zaslání rezervace dostane student e-mail s dalšími informacemi
+        a pokyny. Přehled cen najdete v <a class="font-semibold underline" href="/cenik">ceníku</a>.
       </Fragment>
     </Sectionhead>
     <Steps />
     <section id="register_form">
       <div class="mt-12">
         <h2
-          class="text-2xl text-center mb-12 lg:text-5xl font-bold lg:tracking-tight">
+          class="mb-8 text-center text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl">
           Registrační formulář
         </h2>
       </div>
       <RegisterForm client:load />
+      <p class="mt-8 text-center text-slate-600">
+        Potřebujete poradit před vyplněním formuláře?
+        <a class="font-semibold text-blue-700 underline" href="/kontakty">Kontaktujte nás</a>.
+      </p>
     </section>
   </Container>
 </Layout>

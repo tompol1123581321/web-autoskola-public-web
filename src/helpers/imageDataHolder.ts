@@ -13,7 +13,15 @@ import imagage_11 from "../assets/11.jpeg";
 import imagage_12 from "../assets/12.jpeg";
 import imagage_13 from "../assets/13.jpeg";
 import imagage_14 from "../assets/14.jpeg";
-import type { GalleryImageDetail } from "../models";
+
+type GalleryImageDetail = {
+  id: number;
+  alt: string;
+  description: string;
+  name: string;
+  position: "first" | "mid" | "last";
+  src: unknown;
+};
 
 export const IMAGE_DATA_HOLDER: Array<
   Omit<GalleryImageDetail, "src"> & { src: ImageMetadata }

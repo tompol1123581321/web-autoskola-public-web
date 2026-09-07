@@ -32,7 +32,17 @@ export const postNewRegistration = async (data: ClientRegistrationFormData) => {
 };
 
 export const getTermOptions = async (): Promise<Array<TermOption>> => {
-  const response = await fetch("");
-  const termOptions = await response.json();
-  return termOptions;
+  try {
+    const response = await fetch("");
+    const contentType = response.headers.get("content-type") ?? "";
+
+    if (!response.ok || !contentType.includes("application/json")) {
+      return [];
+    }
+
+    const termOptions = await response.json();
+    return Array.isArray(termOptions) ? termOptions : [];
+  } catch {
+    return [];
+  }
 };

@@ -1,6 +1,6 @@
 ---
 import Container from "../container.astro";
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 import MenuItem from "./menuItem.astro";
 
@@ -39,21 +39,24 @@ const menuitems = [
         <a href="/">
           <div
             class="flex w-full lg:w-auto items-center justify-between rounded-md bg-teal-400-200 p-2">
-            <Icon class="w-8 text-gray-800 mr-2" pack="mdi" name="car" />
+            <Icon class="w-8 text-gray-800 mr-2" name="mdi:car" aria-hidden="true" />
             <span class="font-bold text-slate-800 mr-2"> Hlaváček</span><span
               class="text-slate-500">AUTOŠKOLA</span
             >
           </div>
         </a>
         <div class="block lg:hidden">
-          <MenuIcon class="w-4 h-4 text-gray-800" />
+          <MenuIcon
+            class="w-4 h-4 text-gray-800"
+            aria-label="Otevřít navigaci"
+          />
         </div>
       </div>
     </Astronav>
 
     <MenuItems class="hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0">
       <ul class="flex flex-col lg:flex-row lg:gap-3">
-        {menuitems.map((item, index) => <MenuItem item={item} />)}
+          {menuitems.map((item) => <MenuItem item={item} />)}
       </ul>
     </MenuItems>
   </header>

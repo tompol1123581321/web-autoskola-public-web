@@ -2,43 +2,71 @@
 import { Image } from "astro:assets";
 import { IMAGE_DATA_HOLDER } from "../helpers/imageDataHolder";
 
-type Props = Omit<{galleyText:string}, "galleryImages">;
+type Props = Omit<{ galleryText: string }, "galleryImages">;
 
-const { galleyText } = Astro.props;
+const { galleryText } = Astro.props;
 ---
 
-<section id="gallery">
-  <div class="flex flex-col mx-auto mt-12">
-    <h2 class="font-bold text-3xl text-gray-800">Galerie</h2>
-    <p class="text-lg leading-relaxed text-slate-500">
-      {galleyText}
-    </p>
+<section id="gallery" class="mt-24 scroll-mt-8">
+  <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-widest text-blue-700">
+        Z naší autoškoly
+      </p>
+      <h2 class="mt-2 text-4xl font-bold tracking-tight text-gray-900">
+        Galerie
+      </h2>
+      <p class="mt-3 max-w-2xl text-lg leading-relaxed text-slate-500">
+        {galleryText}
+      </p>
+    </div>
+    <p class="text-sm text-slate-500">{IMAGE_DATA_HOLDER.length} fotografií</p>
   </div>
-  <div
-    class="grid md:grid-cols-5 sm: grid-cols-3 gap-10 mx-auto max-w-5xl mt-12">
+
+  <div class="mt-10 grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-4">
     {
-      IMAGE_DATA_HOLDER.map(({ alt, id, name, src }) => (
-        <div class="group">
-          <div class="w-full aspect-square">
-            <a href={`/galerie/${id}`} class="postcard-link not-prose ">
-              <article class={`postcard-article`}>
-                <div class={`postcard-image-container`}>
-                  <Image
-                    title={name}
-                    quality={"low"}
-                    src={src}
-                    alt={alt}
-                    width={200}
-                    height={100}
-                    sizes="(max-width: 400px) 100vw, 300px"
-                    class="w-full rounded-md object-cover transition hover:-translate-y-1 hover:shadow-xl aspect-square"
-                  />
-                </div>
-              </article>
-            </a>
-          </div>
-        </div>
-      ))
+      IMAGE_DATA_HOLDER.map(({ alt, id, name, src }) => {
+        const imageLabel = alt || name || `Fotografie z autoškoly ${id + 1}`;
+
+        return (
+          <a
+            href={`/galerie/${id}`}
+            aria-label={`Zobrazit ${imageLabel}`}
+            class:list={[
+              "group relative block aspect-square overflow-hidden rounded-xl bg-slate-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-700",
+              id === 0 && "col-span-2 row-span-2",
+            ]}
+          >
+            <Image
+              title={imageLabel}
+              quality="low"
+              src={src}
+              alt={imageLabel}
+              width={800}
+              height={800}
+              loading={id === 0 ? "eager" : "lazy"}
+              sizes={id === 0
+                ? "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 640px"
+                : "(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 320px"}
+              class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+            />
+            <span class="absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-black/70 to-transparent px-4 pb-3 pt-10 text-sm font-medium text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+              <span>{imageLabel}</span>
+              <span aria-hidden="true">{id + 1} / {IMAGE_DATA_HOLDER.length}</span>
+            </span>
+          </a>
+        );
+      })
     }
+  </div>
+
+  <div class="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-slate-200 pt-5">
+    <p class="text-sm text-slate-500">Vyberte fotografii pro větší náhled.</p>
+    <a
+      href="/prihlaseni"
+      class="rounded bg-black px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+    >
+      Chci se přihlásit
+    </a>
   </div>
 </section>

@@ -9,21 +9,24 @@ interface NotesFieldProps {
 
 export const NotesField: React.FC<NotesFieldProps> = ({ register, errors }) => {
   return (
-    <div className="flex flex-wrap -mx-3 mb-2">
-      <div className="w-full px-3 mb-4">
+    <div className="mb-1">
+      <div className="w-full">
         <label
           htmlFor="notes"
-          className="block text-sm font-medium text-gray-700">
+          className="mb-2 block text-sm font-semibold text-gray-700">
           Poznámky
         </label>
         <textarea
           id="notes"
           rows={4}
-          className={`form-textarea mt-1 block w-full ${errors.notes ? "border-red-500" : ""}`}
+          placeholder="Například preferovaný termín nebo doplňující informace"
+          aria-invalid={Boolean(errors.notes)}
+          aria-describedby={errors.notes ? "notes-error" : undefined}
+          className={`block min-h-28 w-full resize-y rounded-lg border bg-white px-3 py-3 text-base text-gray-700 shadow-sm transition placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600 ${errors.notes ? "border-red-500" : "border-gray-300"}`}
           {...register("notes")}
         />
         {errors.notes && (
-          <p className="text-red-500 text-xs italic mt-1">
+          <p id="notes-error" className="mt-1 text-xs italic text-red-500" role="alert">
             {errors.notes.message}
           </p>
         )}
