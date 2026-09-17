@@ -9,7 +9,7 @@ interface NotesFieldProps {
 
 export const NotesField: React.FC<NotesFieldProps> = ({ register, errors }) => {
   return (
-    <div className="mb-1">
+    <div className="mb-6">
       <div className="w-full">
         <label
           htmlFor="notes"

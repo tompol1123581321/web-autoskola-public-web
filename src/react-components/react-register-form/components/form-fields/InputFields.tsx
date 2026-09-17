@@ -13,7 +13,7 @@ export const InputFields: React.FC<InputFieldsProps> = ({
   errors,
 }) => {
   return (
-    <div className="mb-1 grid gap-4 md:grid-cols-2">
+    <div className="mb-6 grid gap-5 md:grid-cols-2">
       <GenericFieldWithValidation
         type="text"
         label="Jméno"

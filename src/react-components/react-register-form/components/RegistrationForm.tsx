@@ -18,6 +18,8 @@ export const RegistrationForm: React.FC = () => {
     reset,
     submitDisabled,
     termOptions,
+    termsError,
+    reloadTermOptions,
   } = useRegistrationForm();
 
   return (
@@ -28,11 +30,13 @@ export const RegistrationForm: React.FC = () => {
 
       <NotesField errors={errors} register={register} />
 
-      <div className="mb-1 grid gap-4">
+      <div className="mb-6 grid gap-5">
         <TermField
           errors={errors}
           register={register}
           termOptions={termOptions}
+          termsError={termsError}
+          onReloadTerms={reloadTermOptions}
         />
         <GdprField errors={errors} register={register} />
       </div>
@@ -44,7 +48,9 @@ export const RegistrationForm: React.FC = () => {
         isLoading={isLoading}
       />
 
-      <RegistrationResultMessage registrationResult={registrationResult} />
+      <div aria-live="polite" className="mt-6">
+        <RegistrationResultMessage registrationResult={registrationResult} />
+      </div>
     </form>
   );
 };

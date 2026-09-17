@@ -10,13 +10,13 @@ The public website needs the following backend capabilities:
 2. Read active course terms available for registration.
 3. Create a new course registration.
 
-The current frontend already uses the price-list endpoint. The registration API currently contains empty `fetch("")` URLs, so the paths below are the recommended contract to implement and then configure in the frontend.
+The frontend is implemented against this contract: `PUBLIC_API_BASE_URL` is used as the base for all three endpoints, and the registration form uses `/api/registrations/options` for available terms.
 
 ## Implementation Priority
 
 Implement in this order:
 
-1. `GET /api/terms/active` so the registration form can offer selectable terms.
+1. `GET /api/registrations/options` so the registration form can offer selectable terms.
 2. `POST /api/registrations` so users can submit the form.
 3. `GET /api/webSettings/current` for the public price list.
 
@@ -114,14 +114,14 @@ const priceListData = response.priceList;
 
 The public price page expects each item to expose `label` and `value` as display strings. The initial contract should return the already formatted Czech value.
 
-## 2. Get Active Course Terms
+## 2. Get Available Registration Terms
 
 This endpoint supplies the options displayed in the registration form.
 
 ### Request
 
 ```http
-GET /api/terms/active
+GET /api/registrations/options
 Accept: application/json
 ```
 
@@ -183,8 +183,8 @@ Recommended status codes: `500` or `503`.
 
 ### Empty and unavailable states
 
-- `200 []`: the endpoint worked and there are currently no available terms.
-- `503`: the term service could not be reached or queried.
+- `200 []`: the endpoint worked and there are currently no available terms. The frontend disables registration and shows "Termíny nejsou momentálně dostupné".
+- `503` or a network error: the frontend shows a distinct "Zkusit znovu" (retry) control instead of treating it as a valid empty list.
 - Never return `200` with an HTML error page or a different JSON shape.
 
 ## 3. Create Course Registration
@@ -331,37 +331,38 @@ Production should use the final deployed public-web origin only.
 
 ## Frontend Integration Checklist
 
-Once the backend is available, update the frontend API wrapper:
+This is implemented in the frontend API wrapper:
 
 ```ts
 const API_BASE_URL = import.meta.env.PUBLIC_API_BASE_URL;
 
-fetch(`${API_BASE_URL}/terms/active`);
-fetch(`${API_BASE_URL}/registrations`, {
+fetch(`${API_BASE_URL}/api/registrations/options`, {
+  headers: { Accept: "application/json" },
+});
+fetch(`${API_BASE_URL}/api/registrations`, {
   method: "POST",
-  headers: { "Content-Type": "application/json" },
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+    "Idempotency-Key": crypto.randomUUID(),
+  },
   body: JSON.stringify(data),
 });
 ```
 
-Also replace the current empty URLs in:
+See:
 
 ```text
 src/react-components/react-register-form/api/index.ts
 ```
 
-The frontend should send an idempotency key for registration retries:
+The frontend handles these states:
 
-```http
-Idempotency-Key: <client-generated-unique-value>
-```
-
-The frontend must handle these states:
-
-- `200` or `201` with a truthy `result`: show success.
-- `409`: tell the user that the selected term is no longer available.
-- `422`: show field-level validation errors when provided.
-- `429`, `500`, or `503`: show a retry message and keep the entered form values.
+- `200` or `201`: show success message, reset the form.
+- `409`: tell the user the selected term is no longer available and reload term options.
+- `422`: show `message` and map `errors` onto individual form fields.
+- `429`: show "Příliš mnoho pokusů. Zkuste to prosím později."
+- `400`, `500`, `503`, or a network error: show a retry message and keep the entered form values.
 
 Recommended backend smoke tests:
 

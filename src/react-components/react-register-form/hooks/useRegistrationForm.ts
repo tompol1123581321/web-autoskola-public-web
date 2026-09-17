@@ -8,11 +8,20 @@ import type { TermOption } from "autoskola-web-shared-models";
 import { getTermOptions, postNewRegistration } from "../api";
 
 const schema: yup.ObjectSchema<ClientRegistrationFormData> = yup.object({
-  firstName: yup.string().trim().required("Jméno je povinné"),
-  lastName: yup.string().trim().required("Příjmení je povinné"),
+  firstName: yup
+    .string()
+    .trim()
+    .max(100, "Jméno může mít maximálně 100 znaků")
+    .required("Jméno je povinné"),
+  lastName: yup
+    .string()
+    .trim()
+    .max(100, "Příjmení může mít maximálně 100 znaků")
+    .required("Příjmení je povinné"),
   email: yup
     .string()
     .trim()
+    .max(254, "E-mail může mít maximálně 254 znaků")
     .email("Zadejte platný e-mail")
     .required("E-mail je povinný"),
   phoneNumber: yup
@@ -25,7 +34,10 @@ const schema: yup.ObjectSchema<ClientRegistrationFormData> = yup.object({
     .boolean()
     .oneOf([true], "Souhlas s GDPR je povinný")
     .required("Souhlas s GDPR je povinný"),
-  notes: yup.string().default(""),
+  notes: yup
+    .string()
+    .max(2000, "Poznámka může mít maximálně 2000 znaků")
+    .default(""),
   termId: yup.string().required("Termín kurzu je povinný"),
 });
 
@@ -41,6 +53,7 @@ const defaultValues: ClientRegistrationFormData = {
 
 export const useRegistrationForm = () => {
   const [termOptions, setTermOptions] = useState<Array<TermOption> | null>(null);
+  const [termsError, setTermsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [registrationResult, setRegistrationResult] = useState<{
     success: boolean;
@@ -48,14 +61,13 @@ export const useRegistrationForm = () => {
   } | null>(null);
 
   const loadTermOptions = useCallback(async () => {
-    try {
-      setIsLoading(true);
-      const termOptions = await getTermOptions();
-      setTermOptions(termOptions);
-    } catch {
-      setTermOptions([]);
-    } finally {
-      setIsLoading(false);
+    setTermsError(false);
+    const result = await getTermOptions();
+    if (result.status === "success") {
+      setTermOptions(result.termOptions);
+    } else {
+      setTermOptions(null);
+      setTermsError(true);
     }
   }, []);
 
@@ -68,6 +80,7 @@ export const useRegistrationForm = () => {
     handleSubmit,
     formState: { errors, isValid },
     reset,
+    setError,
   } = useForm<ClientRegistrationFormData>({
     resolver: yupResolver(schema),
     mode: "onChange",
@@ -82,10 +95,32 @@ export const useRegistrationForm = () => {
   const onSubmit: SubmitHandler<ClientRegistrationFormData> = useCallback(
     async (data) => {
       setIsLoading(true);
+      setRegistrationResult(null);
       try {
-        const { message, result } = await postNewRegistration(data);
-        setRegistrationResult({ message, success: !!result });
-        reset(); // Reset form after successful submission
+        const result = await postNewRegistration(data);
+
+        if (result.status === "success") {
+          setRegistrationResult({ success: true, message: result.message });
+          reset(defaultValues);
+          return;
+        }
+
+        setRegistrationResult({ success: false, message: result.message });
+
+        if (result.status === "validation_error") {
+          (
+            Object.entries(result.errors) as Array<
+              [keyof ClientRegistrationFormData, string]
+            >
+          ).forEach(([field, message]) => {
+            setError(field, { type: "server", message });
+          });
+          return;
+        }
+
+        if (result.status === "conflict") {
+          loadTermOptions();
+        }
       } catch (error) {
         console.error("Error submitting registration:", error);
         setRegistrationResult({
@@ -96,17 +131,19 @@ export const useRegistrationForm = () => {
         setIsLoading(false);
       }
     },
-    [reset],
+    [reset, setError, loadTermOptions],
   );
 
   return {
     register,
     termOptions,
+    termsError,
+    reloadTermOptions: loadTermOptions,
     errors,
     isLoading,
     registrationResult,
     handleSubmit: handleSubmit(onSubmit),
     reset: resetForm,
-    submitDisabled: !isValid,
+    submitDisabled: !isValid || isLoading || !termOptions?.length,
   };
 };

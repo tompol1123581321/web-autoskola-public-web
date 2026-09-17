@@ -13,7 +13,7 @@ export const RegistrationResultMessage: React.FC<
       <div
         className="bg-green-100 border border-green-600 text-green-700 px-3 py-3 flex justify-center items-center rounded"
         role="alert">
-        <p className="text-sm mr-3">Registrace proběhla úspěšně!</p>
+        <p className="text-sm mr-3">{registrationResult.message}</p>
         <div className="flex items-center justify-center w-10 h-10 rounded-full border-green-600 border-2">
           <svg
             viewBox="0 0 24 24"
@@ -35,7 +35,6 @@ export const RegistrationResultMessage: React.FC<
       <div
         className="bg-red-100 border border-red-500 text-red-700 px-3 py-3 rounded"
         role="alert">
-        <p className="text-sm">Registrace selhala.</p>
         <p className="text-sm">{registrationResult.message}</p>
         <p className="text-sm">
           Kontaktujte <a href="tel:+420603928674">603 928 674</a>

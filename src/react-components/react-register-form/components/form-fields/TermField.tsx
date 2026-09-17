@@ -7,6 +7,8 @@ interface TermFieldProps {
   register: UseFormRegister<ClientRegistrationFormData>;
   errors: FieldErrorsImpl<ClientRegistrationFormData>;
   termOptions: TermOption[] | null;
+  termsError?: boolean;
+  onReloadTerms?: () => void;
 }
 
 /**
@@ -16,6 +18,8 @@ export const TermField: React.FC<TermFieldProps> = ({
   register,
   errors,
   termOptions,
+  termsError,
+  onReloadTerms,
 }) => {
   return (
     <div className="w-full">
@@ -38,11 +42,13 @@ export const TermField: React.FC<TermFieldProps> = ({
             }`}
             {...register("termId")}>
             <option value="">
-              {termOptions === null
-                ? "Načítám termíny..."
-                : termOptions.length
-                  ? "Vyberte termín"
-                  : "Termíny nejsou momentálně dostupné"}
+              {termsError
+                ? "Termíny se nepodařilo načíst"
+                : termOptions === null
+                  ? "Načítám termíny..."
+                  : termOptions.length
+                    ? "Vyberte termín"
+                    : "Termíny nejsou momentálně dostupné"}
             </option>
             {termOptions?.map((option) => (
               <option key={option.id} value={option.id}>
@@ -61,6 +67,18 @@ export const TermField: React.FC<TermFieldProps> = ({
             <path d="m6 9 6 6 6-6" />
           </svg>
         </div>
+
+        {termsError && (
+          <p className="mt-1 text-xs text-red-500" role="alert">
+            Termíny se nepodařilo načíst.{" "}
+            <button
+              type="button"
+              onClick={onReloadTerms}
+              className="font-semibold underline">
+              Zkusit znovu
+            </button>
+          </p>
+        )}
       </div>
 
       {/* Error message below */}
