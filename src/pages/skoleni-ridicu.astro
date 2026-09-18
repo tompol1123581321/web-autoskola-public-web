@@ -1,14 +1,18 @@
 ---
 import Container from "../components/container.astro";
 import Layout from "../layouts/Layout.astro";
+import Sectionhead from "../components/sectionhead.astro";
 
 ---
 
 <Layout title="Školení profesních řidičů">
   <Container>
+    <Sectionhead>
+      <Fragment slot="title">O školení</Fragment>
+    </Sectionhead>
+
     <!-- O školení -->
     <section id="about-training" class="mt-12">
-      <h2 class="font-bold text-3xl text-gray-800 mb-4">O školení</h2>
       <p class="text-lg leading-relaxed text-slate-600">
         Ve výuce a výcviku řidičů i v provádění školení profesních řidičů
         pokračují{" "}<strong>Autoškola Luboš Hlaváček</strong>{" "}a{" "}<strong>Todat s.r.o.</strong>.
