@@ -17,7 +17,7 @@ import Container from "../components/container.astro";
         <div
           class="px-4 py-16 mx-auto max-w-6xl lg:px-8 lg:py-20 bg-primary-50">
           <div class="grid mx-auto space-y-6 md:grid-cols-2 md:space-y-0">
-            <div class="space-y-8 sm:px-8">
+            <div class="sm:px-8">
               <div class="flex flex-row max-w-md">
                 <div class="mb-4 mr-4">
                   <div
@@ -25,7 +25,7 @@ import Container from "../components/container.astro";
                     <Icon name="tabler:home" class="w-7 h-7 text-slate-900" />
                   </div>
                 </div>
-                <div>
+                <div class="space-y-1">
                   <h3 class="mb-3 text-xl font-bold">Kde nás najdete</h3>
                   <p>Autoškola Luboš Hlaváček</p>
                   <p>Komenského 40</p>
@@ -33,7 +33,7 @@ import Container from "../components/container.astro";
                 </div>
               </div>
             </div>
-            <div class="space-y-8 sm:px-8">
+            <div class="sm:px-8">
               <div class="flex flex-row max-w-md">
                 <div class="mb-4 mr-4">
                   <div
@@ -41,22 +41,29 @@ import Container from "../components/container.astro";
                     <Icon name="tabler:phone" class="w-7 h-7 text-slate-900" />
                   </div>
                 </div>
-                <div>
+                <div class="space-y-4">
                   <h3 class="mb-3 text-xl font-bold">Kontaktní údaje</h3>
-                  <h5><b>Kancelář:</b></h5>
-                  <ul class="ml-4">
-                    <li><a class="underline hover:text-blue-700" href="tel:+420603928674">603 928 674</a></li>
-                    <li><a class="underline hover:text-blue-700" href="tel:+420604848151">604 848 151</a></li>
-                  </ul>
-                  <h5><b>Učitelé:</b></h5>
-                  <ul class="ml-4">
-                    <li>Luboš Hlaváček - <a class="underline hover:text-blue-700" href="tel:+420605772285">605 772 285</a></li>
-                    <li>Ilona Švárová - <a class="underline hover:text-blue-700" href="tel:+420602888017">602 888 017</a></li>
-                  </ul>
-                  <h5><b>E-mail:</b></h5>
-                  <ul class="ml-4">
-                    <li><a class="underline hover:text-blue-700" href="mailto:autoskola.hlavacek@seznam.cz">autoskola.hlavacek@seznam.cz</a></li>
-                  </ul>
+                  <div>
+                    <h5><b>Kancelář:</b></h5>
+                    <ul class="ml-4">
+                      <li><a class="underline hover:text-blue-700" href="tel:+420603928674">603 928 674</a></li>
+                      <li><a class="underline hover:text-blue-700" href="tel:+420604848151">604 848 151</a></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h5><b>Učitelé:</b></h5>
+                    <ul class="ml-4">
+                      <li>Luboš Hlaváček - <a class="underline hover:text-blue-700" href="tel:+420605772285">605 772 285</a></li>
+                      <li>Ilona Švárová - <a class="underline hover:text-blue-700" href="tel:+420602888017">602 888 017</a></li>
+                      <li>Jan Hlaváček - <a class="underline hover:text-blue-700" href="tel:+420603748999">603 748 999</a></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h5><b>E-mail:</b></h5>
+                    <ul class="ml-4">
+                      <li><a class="underline hover:text-blue-700" href="mailto:autoskola.hlavacek@seznam.cz">autoskola.hlavacek@seznam.cz</a></li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
@@ -72,11 +79,11 @@ import Container from "../components/container.astro";
                 </div>
                 <h3 class="mb-3 ml-3 text-xl font-bold">Mapa</h3>
               </div>
-              <div class="relative mb-4 m-auto max-w-3xl">
+              <div class="relative mx-auto mb-4 mt-8 aspect-[4/3] w-full max-w-3xl overflow-hidden rounded-xl">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d33140.665773965935!2d14.897796999999999!3d49.705245000000005!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470c88327e0e33d1%3A0x6c30ed645228e93!2zS29tZW5za8OpaG8gNDAsIDI1OCAwMSBWbGHFoWltLCDEjGVza28!5e1!3m2!1scs!2sus!4v1668686750931!5m2!1scs!2sus"
                   title="Mapa autoškoly Hlaváček ve Vlašimi"
-                  style="border:0; border-radius: 12px;margin: auto; margin-top: 2rem; max-width: 100%; width: 600px ;height: 450px;"
+                  class="h-full w-full border-0"
                   allowfullscreen=""
                   loading="lazy"
                   referrerpolicy="no-referrer-when-downgrade"></iframe>
