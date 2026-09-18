@@ -30,8 +30,14 @@ import Sectionhead from "../components/sectionhead.astro";
     <section id="terminy-prihlasky" class="mt-12">
       <h2 class="font-bold text-3xl text-gray-800 mb-4">Termíny a přihlášky</h2>
       <p class="text-lg leading-relaxed text-slate-600">
-        Aktuální termíny pravidelných školení najdete v
-        <strong> online přihlašovacím formuláři</strong>. Pokud nenajdete
+        Aktuální termíny pravidelných školení najdete v {" "} 
+        <a
+          class="font-semibold underline"
+          href="https://www.autoskoladvorak.cz/prihlaska/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >online přihlašovacím formuláři</a
+        >. Pokud nenajdete
         vhodný termín, volejte na{" "}
         <a class="font-semibold underline" href="tel:+420603928674">603 928 674</a>.
       </p>
@@ -46,15 +52,6 @@ import Sectionhead from "../components/sectionhead.astro";
         skupiny a telefonní spojení.
       </p>
 
-      <div class="mt-8 bg-white p-4 rounded-md shadow-md">
-        <iframe
-          src="https://www.autoskoladvorak.cz/prihlaska/"
-          title="Přihláška na školení řidičů"
-          width="100%"
-          height="1000"
-          loading="lazy"
-        ></iframe>
-      </div>
     </section>
 
     <!-- Upozornění -->
