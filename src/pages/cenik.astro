@@ -23,8 +23,8 @@ const priceListData:WebSettings['priceList'] = await getPriceListData()
               class="w-full max-w-full text-left text-sm font-light border">
               <thead class="border font-medium dark:border-neutral-500">
                 <tr>
-                  <th scope="col" class="px-6 py-4">Název položky</th>
-                  <th scope="col" class="px-6 py-4">Cena v Kč</th>
+                  <th scope="col" class="px-4 py-4 sm:px-6">Název položky</th>
+                  <th scope="col" class="whitespace-nowrap px-4 py-4 sm:px-6">Cena v Kč</th>
                 </tr>
               </thead>
               <tbody>
@@ -32,10 +32,10 @@ const priceListData:WebSettings['priceList'] = await getPriceListData()
                   priceListData?.map((priceListItem) => {
                     return (
                       <tr class="border transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-200">
-                        <td class="overflow-clip px-6 py-4 font-medium">
+                        <td class="overflow-clip px-4 py-4 font-medium sm:px-6">
                           {priceListItem.label}
                         </td>
-                        <td class="whitespace-nowrap px-6 py-4">
+                        <td class="whitespace-nowrap px-4 py-4 sm:px-6">
                           {priceListItem.value}
                         </td>
                       </tr>

@@ -6,7 +6,7 @@ import Container from "../components/container.astro";
 
 <Layout title="Kontakty">
   <Container>
-    <div class="max-h-screen max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="py-12 md:py-5">
         <div class="text-center pb-5 md:pb-8">
           <h1
@@ -18,14 +18,14 @@ import Container from "../components/container.astro";
           class="px-4 py-16 mx-auto max-w-6xl lg:px-8 lg:py-20 bg-primary-50">
           <div class="grid mx-auto space-y-6 md:grid-cols-2 md:space-y-0">
             <div class="sm:px-8">
-              <div class="flex flex-row max-w-md">
-                <div class="mb-4 mr-4">
+              <div class="flex max-w-md flex-col gap-4 sm:flex-row">
+                <div class="shrink-0">
                   <div
                     class="flex items-center justify-center w-12 h-12 rounded-full bg-primary-500">
                     <Icon name="tabler:home" class="w-7 h-7 text-slate-900" />
                   </div>
                 </div>
-                <div class="space-y-1">
+                <div class="min-w-0 space-y-1">
                   <h3 class="mb-3 text-xl font-bold">Kde nás najdete</h3>
                   <p>Autoškola Luboš Hlaváček</p>
                   <p>Komenského 40</p>
@@ -34,14 +34,14 @@ import Container from "../components/container.astro";
               </div>
             </div>
             <div class="sm:px-8">
-              <div class="flex flex-row max-w-md">
-                <div class="mb-4 mr-4">
+              <div class="flex max-w-md flex-col gap-4 sm:flex-row">
+                <div class="shrink-0">
                   <div
                     class="flex items-center justify-center w-12 h-12 rounded-full bg-primary-500">
                     <Icon name="tabler:phone" class="w-7 h-7 text-slate-900" />
                   </div>
                 </div>
-                <div class="space-y-4">
+                <div class="min-w-0 space-y-4">
                   <h3 class="mb-3 text-xl font-bold">Kontaktní údaje</h3>
                   <div>
                     <h5><b>Kancelář:</b></h5>
@@ -53,15 +53,15 @@ import Container from "../components/container.astro";
                   <div>
                     <h5><b>Učitelé:</b></h5>
                     <ul class="ml-4">
-                      <li>Luboš Hlaváček - <a class="underline hover:text-blue-700" href="tel:+420605772285">605 772 285</a></li>
-                      <li>Ilona Švárová - <a class="underline hover:text-blue-700" href="tel:+420602888017">602 888 017</a></li>
-                      <li>Jan Hlaváček - <a class="underline hover:text-blue-700" href="tel:+420603748999">603 748 999</a></li>
+                      <li>Luboš Hlaváček - <a class="block underline hover:text-blue-700 sm:inline" href="tel:+420605772285">605 772 285</a></li>
+                      <li>Ilona Švárová - <a class="block underline hover:text-blue-700 sm:inline" href="tel:+420602888017">602 888 017</a></li>
+                      <li>Jan Hlaváček - <a class="block underline hover:text-blue-700 sm:inline" href="tel:+420603748999">603 748 999</a></li>
                     </ul>
                   </div>
                   <div>
                     <h5><b>E-mail:</b></h5>
                     <ul class="ml-4">
-                      <li><a class="underline hover:text-blue-700" href="mailto:autoskola.hlavacek@seznam.cz">autoskola.hlavacek@seznam.cz</a></li>
+                      <li><a class="break-words underline hover:text-blue-700" href="mailto:autoskola.hlavacek@seznam.cz">autoskola.hlavacek@<wbr />seznam.cz</a></li>
                     </ul>
                   </div>
                 </div>
