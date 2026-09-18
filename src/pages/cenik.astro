@@ -8,7 +8,10 @@ import type { WebSettings } from "autoskola-web-shared-models";
 const priceListData:WebSettings['priceList'] = await getPriceListData()
 ---
 
-<Layout title="Ceník">
+<Layout
+  title="Ceník"
+  description="Aktuální ceník autoškoly Hlaváček ve Vlašimi. Prohlédněte si ceny řidičských kurzů, kondičních jízd a dalších služeb."
+>
   <Container>
     <Sectionhead>
       <Fragment slot="title">Ceník</Fragment>

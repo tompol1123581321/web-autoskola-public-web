@@ -5,7 +5,10 @@ import Sectionhead from "../components/sectionhead.astro";
 
 ---
 
-<Layout title="Školení profesních řidičů">
+<Layout
+  title="Školení profesních řidičů"
+  description="Školení profesních řidičů ve Vlašimi. Autoškola Hlaváček nabízí pravidelná školení, přihlášky a dopravně psychologické vyšetření."
+>
   <Container>
     <Sectionhead>
       <Fragment slot="title">O školení</Fragment>
@@ -43,15 +46,14 @@ import Sectionhead from "../components/sectionhead.astro";
         skupiny a telefonní spojení.
       </p>
 
-      <!-- Vložený iFrame s přihlašovacím formulářem -->
       <div class="mt-8 bg-white p-4 rounded-md shadow-md">
-        <iframe 
-          src="https://www.autoskoladvorak.cz/prihlaska/" 
+        <iframe
+          src="https://www.autoskoladvorak.cz/prihlaska/"
           title="Přihláška na školení řidičů"
-          width="100%" 
+          width="100%"
           height="1000"
-        >
-        </iframe>
+          loading="lazy"
+        ></iframe>
       </div>
     </section>
 
