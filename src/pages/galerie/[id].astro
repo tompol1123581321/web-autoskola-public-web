@@ -28,6 +28,7 @@ const homeUrl = "/#gallery";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{imageLabel} | Galerie Autoškoly Hlaváček</title>
   </head>
   <body class="m-0">
@@ -55,6 +56,7 @@ const homeUrl = "/#gallery";
         alt={imageLabel}
         quality="max"
         loading="eager"
+        draggable="false"
         class="max-h-full max-w-full rounded-lg object-contain"
       />
       </div>
@@ -110,17 +112,22 @@ const homeUrl = "/#gallery";
 
   const galleryStage = document.querySelector("main");
   let pointerStartX: number | null = null;
+  let activePointerId: number | null = null;
 
   galleryStage?.addEventListener("pointerdown", (event) => {
     if (event.pointerType === "mouse" && event.button !== 0) return;
+
     pointerStartX = event.clientX;
+    activePointerId = event.pointerId;
+    galleryStage.setPointerCapture(event.pointerId);
   });
 
   galleryStage?.addEventListener("pointerup", (event) => {
-    if (pointerStartX === null) return;
+    if (pointerStartX === null || event.pointerId !== activePointerId) return;
 
     const horizontalDistance = event.clientX - pointerStartX;
     pointerStartX = null;
+    activePointerId = null;
 
     if (Math.abs(horizontalDistance) < 50) return;
 
@@ -130,6 +137,12 @@ const homeUrl = "/#gallery";
 
   galleryStage?.addEventListener("pointercancel", () => {
     pointerStartX = null;
+    activePointerId = null;
+  });
+
+  galleryStage?.addEventListener("lostpointercapture", () => {
+    pointerStartX = null;
+    activePointerId = null;
   });
 
 </script>
