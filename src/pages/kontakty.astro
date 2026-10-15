@@ -10,91 +10,93 @@ import Sectionhead from "../components/sectionhead.astro";
   description="Kontaktujte autoškolu Hlaváček ve Vlašimi. Najdete zde adresu, telefonní čísla, e-mail a mapu k naší kanceláři."
 >
   <Container>
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div>
-        <Sectionhead>
-          <Fragment slot="title">Kontakty</Fragment>
-        </Sectionhead>
-        <div
-          class="px-4 py-16 mx-auto max-w-6xl lg:px-8 lg:py-20 bg-primary-50">
-          <div class="grid mx-auto space-y-6 md:grid-cols-2 md:space-y-0">
-            <div class="sm:px-8">
-              <div class="flex max-w-md flex-col gap-4 sm:flex-row">
-                <div class="shrink-0">
-                  <div
-                    class="flex items-center justify-center w-12 h-12 rounded-full bg-primary-500">
-                    <Icon name="tabler:home" class="w-7 h-7 text-slate-900" />
-                  </div>
-                </div>
-                <div class="min-w-0 space-y-1">
-                  <h3 class="mb-3 text-xl font-bold">Kde nás najdete</h3>
-                  <p>Autoškola Luboš Hlaváček</p>
-                  <p>Komenského 40</p>
-                  <p>258 01 Vlašim, okr. Benešov u Prahy</p>
-                </div>
-              </div>
-            </div>
-            <div class="sm:px-8">
-              <div class="flex max-w-md flex-col gap-4 sm:flex-row">
-                <div class="shrink-0">
-                  <div
-                    class="flex items-center justify-center w-12 h-12 rounded-full bg-primary-500">
-                    <Icon name="tabler:phone" class="w-7 h-7 text-slate-900" />
-                  </div>
-                </div>
-                <div class="min-w-0 space-y-4">
-                  <h3 class="mb-3 text-xl font-bold">Kontaktní údaje</h3>
-                  <div>
-                    <h5><b>Kancelář:</b></h5>
-                    <ul class="ml-4">
-                      <li>Pavla Hlaváčková</li>
-                      <li><a class="underline hover:text-blue-700" href="tel:+420603928674">603 928 674</a></li>
-                      <li><a class="underline hover:text-blue-700" href="tel:+420604848151">604 848 151</a></li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h5><b>Učitelé:</b></h5>
-                    <ul class="ml-4">
-                      <li>Luboš Hlaváček - <a class="block underline hover:text-blue-700 sm:inline" href="tel:+420605772285">605 772 285</a></li>
-                      <li>Ilona Švárová - <a class="block underline hover:text-blue-700 sm:inline" href="tel:+420602888017">602 888 017</a></li>
-                      <li>Jan Hlaváček - <a class="block underline hover:text-blue-700 sm:inline" href="tel:+420603748999">603 748 999</a></li>
-                      <li>Jaroslav Kahoun - <a class="block underline hover:text-blue-700 sm:inline" href="tel:+420703481842">703 481 842</a></li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h5><b>E-mail:</b></h5>
-                    <ul class="ml-4">
-                      <li><a class="break-words underline hover:text-blue-700" href="mailto:autoskola.hlavacek@seznam.cz">autoskola.hlavacek@<wbr />seznam.cz</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="space-y-8 sm:px-8 w-full">
-            <!-- styling flex -->
+    <Sectionhead>
+      <Fragment slot="title">Kontakty</Fragment>
+    </Sectionhead>
 
-            <div class="w-full mt-10">
-              <div class="flex items-center">
-                <div
-                  class="flex items-center justify-center w-12 h-12 rounded-full bg-primary-500">
-                  <Icon name="tabler:map" class="w-7 h-7 text-slate-900" />
-                </div>
-                <h3 class="mb-3 ml-3 text-xl font-bold">Mapa</h3>
-              </div>
-              <div class="relative mx-auto mb-4 mt-8 aspect-[4/3] w-full max-w-3xl overflow-hidden rounded-xl">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d33140.665773965935!2d14.897796999999999!3d49.705245000000005!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470c88327e0e33d1%3A0x6c30ed645228e93!2zS29tZW5za8OpaG8gNDAsIDI1OCAwMSBWbGHFoWltLCDEjGVza28!5e1!3m2!1scs!2sus!4v1668686750931!5m2!1scs!2sus"
-                  title="Mapa autoškoly Hlaváček ve Vlašimi"
-                  class="h-full w-full border-0"
-                  allowfullscreen=""
-                  loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade"></iframe>
-              </div>
+    <section class="mx-auto mt-10 grid max-w-5xl items-stretch gap-5 md:grid-cols-2">
+      <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-blue-200 hover:shadow-md motion-reduce:transition-none sm:p-6">
+        <div>
+          <div class="flex items-center gap-3">
+          <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-700">
+            <Icon name="tabler:home" class="h-6 w-6" />
+          </span>
+            <h2 class="text-xl font-bold text-gray-900">Kde nás najdete</h2>
+          </div>
+          <address class="mt-5 space-y-1 not-italic leading-relaxed text-slate-600">
+            <p>Autoškola Luboš Hlaváček</p>
+            <p>Komenského 40</p>
+            <p>258 01 Vlašim, okr. Benešov u Prahy</p>
+          </address>
+        </div>
+      </article>
+
+      <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-blue-200 hover:shadow-md motion-reduce:transition-none sm:p-6">
+        <div>
+          <div class="flex items-center gap-3">
+          <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-700">
+            <Icon name="tabler:phone" class="h-6 w-6" />
+          </span>
+            <h2 class="text-xl font-bold text-gray-900">Kontaktní údaje</h2>
+          </div>
+
+          <div class="mt-5 grid gap-3 text-slate-600 sm:grid-cols-2">
+            <div class="rounded-xl border border-slate-200 bg-slate-50 p-4">
+              <h3 class="font-semibold text-gray-900">Kancelář</h3>
+              <p class="mt-1">Pavla Hlaváčková</p>
+              <ul class="mt-1 space-y-1">
+                <li><a class="whitespace-nowrap underline decoration-1 underline-offset-2 hover:text-blue-700" href="tel:+420603928674">603 928 674</a></li>
+                <li><a class="whitespace-nowrap underline decoration-1 underline-offset-2 hover:text-blue-700" href="tel:+420604848151">604 848 151</a></li>
+              </ul>
+            </div>
+
+            <div class="rounded-xl border border-slate-200 bg-slate-50 p-4">
+              <h3 class="font-semibold text-gray-900">E-mail</h3>
+              <a class="mt-1 block break-all underline decoration-1 underline-offset-2 hover:text-blue-700" href="mailto:autoskola.hlavacek@seznam.cz">autoskola.hlavacek@seznam.cz</a>
+            </div>
+
+            <div class="rounded-xl border border-slate-200 bg-slate-50 p-4 sm:col-span-2">
+              <h3 class="font-semibold text-gray-900">Učitelé</h3>
+              <ul class="mt-3 grid gap-2 sm:grid-cols-2">
+                <li class="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 rounded-lg bg-white px-3 py-2">
+                  <span>Luboš Hlaváček</span>
+                  <a class="whitespace-nowrap font-medium underline decoration-1 underline-offset-2 hover:text-blue-700" href="tel:+420605772285">605 772 285</a>
+                </li>
+                <li class="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 rounded-lg bg-white px-3 py-2">
+                  <span>Ilona Švárová</span>
+                  <a class="whitespace-nowrap font-medium underline decoration-1 underline-offset-2 hover:text-blue-700" href="tel:+420602888017">602 888 017</a>
+                </li>
+                <li class="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 rounded-lg bg-white px-3 py-2">
+                  <span>Jan Hlaváček</span>
+                  <a class="whitespace-nowrap font-medium underline decoration-1 underline-offset-2 hover:text-blue-700" href="tel:+420603748999">603 748 999</a>
+                </li>
+                <li class="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 rounded-lg bg-white px-3 py-2">
+                  <span>Jaroslav Kahoun</span>
+                  <a class="whitespace-nowrap font-medium underline decoration-1 underline-offset-2 hover:text-blue-700" href="tel:+420703481842">703 481 842</a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
+      </article>
+    </section>
+
+    <section class="mx-auto mt-8 max-w-5xl rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-8">
+      <div class="mb-5 flex items-center gap-3">
+        <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-700">
+          <Icon name="tabler:map" class="h-6 w-6" />
+        </span>
+        <h2 class="text-xl font-bold text-gray-900">Mapa</h2>
       </div>
-    </div>
+      <div class="relative aspect-[4/3] w-full overflow-hidden rounded-xl sm:aspect-[16/9]">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d33140.665773965935!2d14.897796999999999!3d49.705245000000005!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470c88327e0e33d1%3A0x6c30ed645228e93!2zS29tZW5za8OpaG8gNDAsIDI1OCAwMSBWbGHFoWltLCDEjGVza28!5e1!3m2!1scs!2sus!4v1668686750931!5m2!1scs!2sus"
+          title="Mapa autoškoly Hlaváček ve Vlašimi"
+          class="h-full w-full border-0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </section>
   </Container>
 </Layout>
