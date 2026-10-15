@@ -14,10 +14,9 @@ const features = [
   {
     title: "Nově nabízíme kurzy skupiny B+E",
     description:
-      "Získejte řidičské oprávnění skupiny B+E pro řízení osobního automobilu s přívěsem. Přihlaste se do kurzu online.",
+      "Kurzy skupiny B+E pro řízení osobního automobilu s přívěsem probíhají průběžně. Pro přihlášení nás kontaktujte:",
     icon: "bx:bxs-car",
-    href: "/prihlaseni",
-    linkText: "Přejít k přihlášce",
+    contacts: true,
   },
   {
     title: "Přihlašování na kurzy",
@@ -60,12 +59,19 @@ const features = [
             <p class="text-slate-500 mt-2 leading-relaxed whitespace-pre-line">
               {item.description}
             </p>
-            <a
-              class="mt-3 inline-block font-semibold text-blue-700 underline decoration-1 underline-offset-2 hover:text-blue-900"
-              href={item.href}
-            >
-              {item.linkText}
-            </a>
+            {item.contacts ? (
+              <div class="mt-3 flex flex-col items-start gap-1 font-semibold text-blue-700">
+                <a class="underline decoration-1 underline-offset-2 hover:text-blue-900" href="tel:+420603928674">603 928 674</a>
+                <a class="break-all underline decoration-1 underline-offset-2 hover:text-blue-900" href="mailto:autoskola.hlavacek@seznam.cz">autoskola.hlavacek@seznam.cz</a>
+              </div>
+            ) : (
+              <a
+                class="mt-3 inline-block font-semibold text-blue-700 underline decoration-1 underline-offset-2 hover:text-blue-900"
+                href={item.href}
+              >
+                {item.linkText}
+              </a>
+            )}
           </div>
         </div>
       ))
