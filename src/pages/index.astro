@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import lubos from "../assets/LubosHlavacek.jpg";
 
@@ -33,30 +34,60 @@ const publishedTeamMembers = [
 
     <section id="nabizime" class="mt-12">
       <h2 class="mb-4 text-3xl font-bold text-gray-800">Nabízíme</h2>
-      <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <article class="rounded-xl bg-white p-5 shadow-sm">
-          <h3 class="text-lg font-semibold text-gray-900">Základní výcvik</h3>
-          <p class="mt-2 leading-relaxed text-slate-600">Skupiny B, A2, A</p>
+      <div class="mt-6 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <article class="group h-full rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-blue-200 hover:shadow-md motion-reduce:transition-none">
+          <div class="flex items-center gap-3">
+            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-700">
+              <Icon name="bx:bxs-car" class="h-6 w-6" />
+            </span>
+            <h3 class="text-lg font-semibold leading-snug text-gray-900">Základní výcvik</h3>
+          </div>
+          <p class="mt-4 leading-relaxed text-slate-600">Skupiny B, A2, A</p>
         </article>
-        <article class="rounded-xl bg-white p-5 shadow-sm">
-          <h3 class="text-lg font-semibold text-gray-900">Rozšiřující výcvik</h3>
-          <p class="mt-2 leading-relaxed text-slate-600">Skupiny RB/A2, RB/A, RA1/A2, RA2/A, RB/B+E, B96</p>
+        <article class="group h-full rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-blue-200 hover:shadow-md motion-reduce:transition-none">
+          <div class="flex items-center gap-3">
+            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-700">
+              <Icon name="bx:bxs-car-garage" class="h-6 w-6" />
+            </span>
+            <h3 class="text-lg font-semibold leading-snug text-gray-900">Rozšiřující výcvik</h3>
+          </div>
+          <p class="mt-4 leading-relaxed text-slate-600">Skupiny RB/A2, RB/A, RA1/A2, RA2/A, RB/B+E, B96</p>
         </article>
-        <article class="rounded-xl bg-white p-5 shadow-sm">
-          <h3 class="text-lg font-semibold text-gray-900">Sdružený výcvik</h3>
-          <p class="mt-2 leading-relaxed text-slate-600">Skupiny B+A2, B+A</p>
+        <article class="group h-full rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-blue-200 hover:shadow-md motion-reduce:transition-none">
+          <div class="flex items-center gap-3">
+            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-700">
+              <Icon name="bx:bxs-car-mechanic" class="h-6 w-6" />
+            </span>
+            <h3 class="text-lg font-semibold leading-snug text-gray-900">Sdružený výcvik</h3>
+          </div>
+          <p class="mt-4 leading-relaxed text-slate-600">Skupiny B+A2, B+A</p>
         </article>
-        <article class="rounded-xl bg-white p-5 shadow-sm">
-          <h3 class="text-lg font-semibold text-gray-900">Kondiční jízdy</h3>
-          <p class="mt-2 leading-relaxed text-slate-600">Skupiny B, A, B+E</p>
+        <article class="group h-full rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-blue-200 hover:shadow-md motion-reduce:transition-none">
+          <div class="flex items-center gap-3">
+            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-700">
+              <Icon name="bx:bxs-dashboard" class="h-6 w-6" />
+            </span>
+            <h3 class="text-lg font-semibold leading-snug text-gray-900">Kondiční jízdy</h3>
+          </div>
+          <p class="mt-4 leading-relaxed text-slate-600">Skupiny B, A, B+E</p>
         </article>
-        <article class="rounded-xl bg-white p-5 shadow-sm">
-          <h3 class="text-lg font-semibold text-gray-900">Přezkoušení z odborné způsobilosti</h3>
-          <p class="mt-2 leading-relaxed text-slate-600">Přezkoušení k řízení motorových vozidel pro skupiny B a A</p>
+        <article class="group h-full rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-blue-200 hover:shadow-md motion-reduce:transition-none">
+          <div class="flex items-center gap-3">
+            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-700">
+              <Icon name="bx:bxs-certification" class="h-6 w-6" />
+            </span>
+            <h3 class="text-lg font-semibold leading-snug text-gray-900">Přezkoušení z odborné způsobilosti</h3>
+          </div>
+          <p class="mt-4 leading-relaxed text-slate-600">Přezkoušení k řízení motorových vozidel pro skupiny B a A</p>
         </article>
-        <article class="rounded-xl bg-white p-5 shadow-sm">
-          <h3 class="text-lg font-semibold text-gray-900">Školení</h3>
-          <ul class="mt-2 list-disc space-y-1 pl-5 leading-relaxed text-slate-600">
+        <article class="group h-full rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-blue-200 hover:shadow-md motion-reduce:transition-none">
+          <div class="flex items-center gap-3">
+            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-700">
+              <Icon name="bx:bxs-graduation" class="h-6 w-6" />
+            </span>
+            <h3 class="text-lg font-semibold leading-snug text-gray-900">Školení</h3>
+          </div>
+          <ul class="mt-4 list-disc space-y-1 pl-5 leading-relaxed text-slate-600 marker:text-blue-700">
             <li>Začínajících řidičů</li>
             <li><strong>Zdarma školení pro mentory L17</strong></li>
             <li>Řidičů referentů</li>
@@ -110,55 +141,80 @@ const publishedTeamMembers = [
 
     <!-- Provozní doba -->
     <section id="office-info" class="mt-12">
-      <div class="flex flex-col mx-auto">
-        <h2 class="font-bold text-3xl text-gray-800 mb-4"> Provozní doba kanceláře</h2>
+      <div>
+        <h2 class="mb-4 text-3xl font-bold text-gray-800">Provozní doba kanceláře</h2>
         <p class="text-lg leading-relaxed text-slate-500">
-          Upozornění: Provozní doba se může ve výjimečných případech změnit. Pokud bude kancelář dočasně uzavřená, volejte nebo pište e-mail dle kontaktů uvedených v sekci Kontakty.
+          Upozornění: Provozní doba se může ve výjimečných případech změnit. Pokud bude kancelář dočasně uzavřená, volejte nebo pište e-mail dle kontaktů uvedených v sekci <a class="font-semibold text-blue-700 underline decoration-1 underline-offset-2 hover:text-blue-900" href="/kontakty">Kontakty</a>.
         </p>
       </div>
 
-      <div class="mx-auto max-w-xl mt-12 overflow-x-auto shadow-md sm:rounded-lg bg-white p-4">
-        <table class="table-auto w-auto mx-auto text-sm text-gray-600">
-          <thead class="text-xs uppercase bg-gray-50 text-gray-600">
+      <div class="group mx-auto mt-8 max-w-2xl overflow-x-auto rounded-2xl border border-slate-200 bg-white p-3 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-blue-200 hover:shadow-md motion-reduce:transition-none sm:p-5">
+        <table class="w-full table-fixed text-left text-sm text-slate-600">
+          <thead class="bg-blue-50/70 text-xs uppercase tracking-wide text-slate-700">
             <tr>
-              <th scope="col" class="px-6 py-3 font-semibold text-gray-800">
+              <th scope="col" class="w-1/3 rounded-l-lg px-3 py-3 font-semibold sm:px-5">
                 Den
               </th>
-              <th scope="col" class="px-6 py-3 font-semibold text-gray-800">
+              <th scope="col" class="w-2/3 rounded-r-lg px-3 py-3 font-semibold sm:px-5">
                 Otevřeno
               </th>
             </tr>
           </thead>
-          <tbody>
-            <tr class="border-b">
-              <th scope="row" class="px-6 py-4 font-semibold text-gray-800 whitespace-nowrap">
+          <tbody class="divide-y divide-slate-100">
+            <tr>
+              <th scope="row" class="whitespace-nowrap px-3 py-4 font-semibold text-gray-900 sm:px-5">
                 Pondělí
               </th>
-              <td class="px-6 py-4">9:00 – 12:00, 12:30 – 15:30</td>
-            </tr>
-            <tr class="border-b">
-              <th scope="row" class="px-6 py-4 font-semibold text-gray-800 whitespace-nowrap">
-                Úterý
-              </th>
-              <td class="px-6 py-4">9:00 – 12:00, 12:30 – 15:30</td>
-            </tr>
-            <tr class="border-b">
-              <th scope="row" class="px-6 py-4 font-semibold text-gray-800 whitespace-nowrap">
-                Středa
-              </th>
-              <td class="px-6 py-4">9:00 – 12:00, 12:30 – 16:30</td>
-            </tr>
-            <tr class="border-b">
-              <th scope="row" class="px-6 py-4 font-semibold text-gray-800 whitespace-nowrap">
-                Čtvrtek
-              </th>
-              <td class="px-6 py-4">9:00 – 12:00, 12:30 – 15:30</td>
+              <td class="px-3 py-4 sm:px-5">
+                <div class="flex flex-wrap gap-x-3 gap-y-1">
+                  <span class="whitespace-nowrap">9:00 – 12:00</span>
+                  <span class="whitespace-nowrap">12:30 – 15:30</span>
+                </div>
+              </td>
             </tr>
             <tr>
-              <th scope="row" class="px-6 py-4 font-semibold text-gray-800 whitespace-nowrap">
+              <th scope="row" class="whitespace-nowrap px-3 py-4 font-semibold text-gray-900 sm:px-5">
+                Úterý
+              </th>
+              <td class="px-3 py-4 sm:px-5">
+                <div class="flex flex-wrap gap-x-3 gap-y-1">
+                  <span class="whitespace-nowrap">9:00 – 12:00</span>
+                  <span class="whitespace-nowrap">12:30 – 15:30</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row" class="whitespace-nowrap px-3 py-4 font-semibold text-gray-900 sm:px-5">
+                Středa
+              </th>
+              <td class="px-3 py-4 sm:px-5">
+                <div class="flex flex-wrap gap-x-3 gap-y-1">
+                  <span class="whitespace-nowrap">9:00 – 12:00</span>
+                  <span class="whitespace-nowrap">12:30 – 16:30</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row" class="whitespace-nowrap px-3 py-4 font-semibold text-gray-900 sm:px-5">
+                Čtvrtek
+              </th>
+              <td class="px-3 py-4 sm:px-5">
+                <div class="flex flex-wrap gap-x-3 gap-y-1">
+                  <span class="whitespace-nowrap">9:00 – 12:00</span>
+                  <span class="whitespace-nowrap">12:30 – 15:30</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row" class="whitespace-nowrap px-3 py-4 font-semibold text-gray-900 sm:px-5">
                 Pátek
               </th>
-              <td class="px-6 py-4">9:00 – 12:00, 12:30 – 16:00</td>
+              <td class="px-3 py-4 sm:px-5">
+                <div class="flex flex-wrap gap-x-3 gap-y-1">
+                  <span class="whitespace-nowrap">9:00 – 12:00</span>
+                  <span class="whitespace-nowrap">12:30 – 16:00</span>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
